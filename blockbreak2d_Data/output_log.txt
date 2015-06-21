@@ -12,22 +12,12 @@ Platform assembly: C:\Users\new user\Documents\Blockbreak2D\blockbreak2d_Data\Ma
 Loading C:\Users\new user\Documents\Blockbreak2D\blockbreak2d_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\new user\Documents\Blockbreak2D\blockbreak2d_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\new user\Documents\Blockbreak2D\blockbreak2d_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.047 seconds
+- Completed reload, in  0.037 seconds
 desktop: 1920x1200 59Hz; virtual: 3840x1200 at -1920,0
 <RI> Initializing input.
 <RI> Input initialized.
 Platform assembly: C:\Users\new user\Documents\Blockbreak2D\blockbreak2d_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\new user\Documents\Blockbreak2D\blockbreak2d_Data\Managed\System.dll (this message is harmless)
-reset score
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-UnloadTime: 5.347797 ms
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-
-Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 1060.
-Total: 0.726581 ms (FindLiveObjects: 0.035495 ms CreateObjectMapping: 0.010263 ms MarkObjects: 0.292942 ms  DeleteObjects: 0.041482 ms)
-
 Music volume:0.1950608
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
@@ -36,35 +26,7 @@ SFX volume:1
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
-Use AI:True
+Use AI:False
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-UnloadTime: 1.189302 ms
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-
-Unloading 59 unused Assets to reduce memory usage. Loaded Objects now: 218.
-Total: 0.747109 ms (FindLiveObjects: 0.007697 ms CreateObjectMapping: 0.007697 ms MarkObjects: 0.150106 ms  DeleteObjects: 0.268138 ms)
-
-reset score
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-UnloadTime: 0.733424 ms
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-
-Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 1059.
-Total: 0.638057 ms (FindLiveObjects: 0.030363 ms CreateObjectMapping: 0.011546 ms MarkObjects: 0.273270 ms  DeleteObjects: 0.006842 ms)
-
-UnloadTime: 1.259009 ms
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-
-Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 920.
-Total: 0.642762 ms (FindLiveObjects: 0.024376 ms CreateObjectMapping: 0.011118 ms MarkObjects: 0.250176 ms  DeleteObjects: 0.047469 ms)
-
-UnloadTime: 0.969916 ms
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-
-Unloading 42 unused Assets to reduce memory usage. Loaded Objects now: 218.
-Total: 0.577331 ms (FindLiveObjects: 0.007697 ms CreateObjectMapping: 0.019244 ms MarkObjects: 0.160797 ms  DeleteObjects: 0.084247 ms)
 
