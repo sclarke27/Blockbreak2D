@@ -13,10 +13,12 @@ public class GameData : MonoBehaviour {
     public float defaultMusicVolume = 0.14f;
     public float defaultDifficultyLevel = 1f;
     public float defaultPaddleSpeed = 0.1f;
+    public int defaultPlayerLives = 3;
 
     private bool useAI = false;
     private float difficultyLevel = 1f;
     private int playerScore = 0;
+    private int playerLives = 0;
     private bool gamePaused;
     private float currMusicVolume;
     private float currSFXVolume;
@@ -41,11 +43,18 @@ public class GameData : MonoBehaviour {
             SetSFXVolume(PlayerPrefs.GetFloat(playerPrefTypes.sfxVolume.ToString(), defaultSFXVolume));
             SetAIEnabled( (PlayerPrefs.GetFloat(playerPrefTypes.useAI.ToString(), (useAI) ? 0 : 1) == 0) ? false : true);
             SetDifficulty(PlayerPrefs.GetFloat(playerPrefTypes.difficultyLevel.ToString(), defaultDifficultyLevel));
+            ResetPlayerLives();
         }
         else if (this != instance)
         {
             Destroy(gameObject);
         }
+    }
+
+    public void ResetPlayerScore()
+    {
+        playerScore = 0;
+        Debug.Log("reset score");
     }
 
     public int GetPlayerScore()
@@ -123,5 +132,35 @@ public class GameData : MonoBehaviour {
     public float GetDefaultPaddleSpeed()
     {
         return defaultPaddleSpeed;
+    }
+
+    public int GetPlayerDefaultLives()
+    {
+        return defaultPlayerLives;
+    }
+
+    public int GetPlayerRemainingLives()
+    {
+        return playerLives;
+    }
+
+    private void SetPlayerRemainingLives(int lifeCount)
+    {
+        playerLives = lifeCount;
+    }
+
+    public void ResetPlayerLives()
+    {
+        playerLives = defaultPlayerLives;
+    }
+
+    public void LoseOneLife()
+    {
+        SetPlayerRemainingLives(playerLives - 1);
+    }
+
+    public void GainOneLife()
+    {
+        SetPlayerRemainingLives(playerLives + 1);
     }
 }

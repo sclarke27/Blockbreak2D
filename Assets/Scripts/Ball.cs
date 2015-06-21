@@ -5,7 +5,6 @@ public class Ball : MonoBehaviour
 {
 
     private Paddle paddle;
-
     private Vector3 paddleToBallVector;
     private bool isLocked = true;
     private GameData gameData;
@@ -17,6 +16,11 @@ public class Ball : MonoBehaviour
         paddle = GameObject.FindObjectOfType<Paddle>();
         paddleToBallVector = this.transform.position - paddle.transform.position;
         //Debug.Log(optionsPanel.GetUserPreference("sfxVolume"));
+    }
+
+    public void LockBall()
+    {
+        isLocked = true;
     }
 
     // Update is called once per frame

@@ -51,11 +51,11 @@ public class Paddle : MonoBehaviour
                 else
                 {
                     float speedMultplier = gameData.GetDifficultyLevel() / 10;
-                    if (Input.GetKey(KeyCode.LeftArrow))
+                    if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
                     {
                         paddlePos.x = paddlePos.x - (gameData.GetDefaultPaddleSpeed() + speedMultplier);
                     }
-                    if (Input.GetKey(KeyCode.RightArrow))
+                    if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
                     {
                         paddlePos.x = paddlePos.x + (gameData.GetDefaultPaddleSpeed() + speedMultplier);
                     }

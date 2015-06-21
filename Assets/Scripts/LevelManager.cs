@@ -7,12 +7,16 @@ public class LevelManager : MonoBehaviour
 
     private string levelName;
     private GameData gameData;
+    private GameHUD gameHUD;
     private Cursor cursor;
+    private Ball playerBall;
     
 
-    void Start()
+    void Awake()
     {
         gameData = GameObject.FindObjectOfType<GameData>();
+        gameHUD = GameObject.FindObjectOfType<GameHUD>();
+        playerBall = GameObject.FindObjectOfType<Ball>();
     }
 
     public void LoadLevel(string name)
@@ -35,15 +39,30 @@ public class LevelManager : MonoBehaviour
     {
         Screen.showCursor = false;
         gameData.PauseGame(false);
+        gameData.ResetPlayerLives();
+        gameData.ResetPlayerScore();
         Brick.breakableCount = 0;
         Application.LoadLevel(1);
     }
 
     public void RestartLevel()
     {
+        if (gameData.GetPlayerRemainingLives() <= 0)
+        {
+            gameData.ResetPlayerScore();
+            gameData.ResetPlayerLives();
+        }
+
         gameData.PauseGame(false);
         Brick.breakableCount = 0;
         Application.LoadLevel(Application.loadedLevel);
+    }
+
+    public void ResetPlayer()
+    {
+        //gameData.PauseGame(false);
+        gameHUD.SetPlayerReady(false);
+        playerBall.LockBall();
     }
 
     public void LoadNextLevel()
@@ -63,5 +82,7 @@ public class LevelManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+
 
 }
