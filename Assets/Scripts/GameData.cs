@@ -16,7 +16,7 @@ public class GameData : MonoBehaviour {
     public int defaultPlayerLives = 3;
 
     private bool useAI = false;
-    private float difficultyLevel = 1f;
+    private float difficultyLevel = 2f;
     private int playerScore = 0;
     private int playerLives = 0;
     private bool gamePaused;
