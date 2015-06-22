@@ -46,7 +46,7 @@ public class Brick : MonoBehaviour
         Destroy(gameObject);
         if (Brick.breakableCount <= 0)
         {
-            levelManager.LoadNextLevel();
+            levelManager.ShowLevelComplete();
         }
     }
 
@@ -54,7 +54,7 @@ public class Brick : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         int maxHits = hitSprites.Length + 1;
-        //float sfxVolume = optionsPanel.GetUserPreference(OptionsPanel.playerPrefTypes.sfxVolume);
+        float sfxVolume = gameData.GetSFXVolume();
         if (isBreakable)
         {
             timesHit++;
@@ -64,12 +64,12 @@ public class Brick : MonoBehaviour
         {
             DestroyBrick();
             gameData.AddPlayerScore(scoreValue);
-            AudioSource.PlayClipAtPoint(breakSound, this.transform.position, gameData.GetSFXVolume());
+            AudioSource.PlayClipAtPoint(breakSound, this.transform.position, sfxVolume);
         }
         else
         {
             LoadSprites();
-            AudioSource.PlayClipAtPoint(hitSound, this.transform.position, gameData.GetSFXVolume());
+            AudioSource.PlayClipAtPoint(hitSound, this.transform.position, sfxVolume);
         }
 
     }

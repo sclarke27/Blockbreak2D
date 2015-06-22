@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     private GameHUD gameHUD;
     private Cursor cursor;
     private Ball playerBall;
+    private MusicPlayer musicPlayer;
     
 
     void Awake()
@@ -17,19 +18,23 @@ public class LevelManager : MonoBehaviour
         gameData = GameObject.FindObjectOfType<GameData>();
         gameHUD = GameObject.FindObjectOfType<GameHUD>();
         playerBall = GameObject.FindObjectOfType<Ball>();
+        musicPlayer = GameObject.FindObjectOfType<MusicPlayer>();
     }
 
     public void LoadLevel(string name)
     {
         Brick.breakableCount = 0;
         gameData.PauseGame(false);
+        
         levelName = name;
         if (levelName.IndexOf("Level") >= 0)
         {
+            musicPlayer.SetInMenu(false);
             Screen.showCursor = false;
         }
         else
         {
+            musicPlayer.SetInMenu(true);
             Screen.showCursor = true;
         }
         Application.LoadLevel(levelName);
@@ -41,6 +46,7 @@ public class LevelManager : MonoBehaviour
         gameData.PauseGame(false);
         gameData.ResetPlayerLives();
         gameData.ResetPlayerScore();
+        musicPlayer.SetInMenu(false);
         Brick.breakableCount = 0;
         Application.LoadLevel(1);
     }
@@ -62,11 +68,13 @@ public class LevelManager : MonoBehaviour
     {
         //gameData.PauseGame(false);
         gameHUD.SetPlayerReady(false);
+        playerBall.ShowBallDestruction();
         playerBall.LockBall();
     }
 
     public void LoadNextLevel()
     {
+        musicPlayer.SetInMenu(false);
         gameData.PauseGame(false);
         Brick.breakableCount = 0;
         Application.LoadLevel(Application.loadedLevel + 1);
@@ -74,6 +82,7 @@ public class LevelManager : MonoBehaviour
 
     public void MainMenu()
     {
+        musicPlayer.SetInMenu(true);
         Application.LoadLevel("StartMenu");
     }
 
@@ -83,6 +92,15 @@ public class LevelManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void ShowLevelComplete()
+    {
+        musicPlayer.SetInMenu(true);
+        playerBall.ShowBallDestruction();
+        playerBall.LockBall();
+        gameData.PauseGame(false);
+        gameHUD.SetPlayerReady(false);
+        gameHUD.ShowLevelComplete();
+    }
 
 
 }

@@ -21,6 +21,7 @@ public class GameHUD : MonoBehaviour
 
     public GameObject pausePanel;
     public GameObject readyPanel;
+    public GameObject levelCompletePanel;
 
     private GameData gameData;
     private LevelManager levelManager;
@@ -111,5 +112,10 @@ public class GameHUD : MonoBehaviour
     public void HandleDiffcultySlider()
     {
         gameData.SetDifficulty(difficultySlider.value);
+    }
+
+    public void ShowLevelComplete()
+    {
+        levelCompletePanel.SetActive(true);
     }
 }

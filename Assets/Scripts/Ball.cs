@@ -8,6 +8,9 @@ public class Ball : MonoBehaviour
     private Vector3 paddleToBallVector;
     private bool isLocked = true;
     private GameData gameData;
+    public AudioSource ballDestructionSound;
+    public GameObject ballBreakParticles;
+
 
     // Use this for initialization
     void Start()
@@ -23,13 +26,26 @@ public class Ball : MonoBehaviour
         isLocked = true;
     }
 
+    public void ShowBallDestruction()
+    {
+        if (ballDestructionSound != null)
+        {
+            ballDestructionSound.volume = gameData.GetSFXVolume();
+            ballDestructionSound.Play();
+        }
+        ParticleEmitter breakParticles = Instantiate(ballBreakParticles, this.transform.position, Quaternion.identity) as ParticleEmitter;
+        Destroy(breakParticles);
+
+
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (isLocked)
         {
             this.transform.position = paddle.transform.position + paddleToBallVector;
-            if (Input.GetKeyDown(KeyCode.Space) || gameData.GetAIEnabled())
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 isLocked = false;
                 this.rigidbody2D.velocity = new Vector2(gameData.ballBounceSideVariance, (gameData.ballStartingVelocity + gameData.GetDifficultyLevel()));
@@ -37,7 +53,7 @@ public class Ball : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Space) || !gameData.GetAIEnabled())
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 isLocked = false;
             }
