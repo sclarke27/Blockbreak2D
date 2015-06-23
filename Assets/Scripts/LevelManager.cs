@@ -36,6 +36,17 @@ public class LevelManager : MonoBehaviour
         {
             musicPlayer.SetInMenu(true);
             Screen.showCursor = true;
+            if (levelName == "LoseScreen")
+            {
+                //if player got high score, show name dialog instead of loading next level
+                if (gameData.GetPlayerScoreRank() < 26)
+                {
+                    //gameData.SavePlayerScore();
+                    gameHUD.ToggleHighScoreNameDialog(true, levelName);
+                    return;
+                }
+                
+            }
         }
         Application.LoadLevel(levelName);
     }
@@ -78,6 +89,8 @@ public class LevelManager : MonoBehaviour
         gameData.PauseGame(false);
         Brick.breakableCount = 0;
         Application.LoadLevel(Application.loadedLevel + 1);
+
+
     }
 
     public void MainMenu()
@@ -85,7 +98,6 @@ public class LevelManager : MonoBehaviour
         musicPlayer.SetInMenu(true);
         Application.LoadLevel("StartMenu");
     }
-
 
     public void QuitRequest()
     {
@@ -98,7 +110,6 @@ public class LevelManager : MonoBehaviour
         playerBall.ShowBallDestruction();
         playerBall.LockBall();
         gameData.PauseGame(false);
-        gameHUD.SetPlayerReady(false);
         gameHUD.ShowLevelComplete();
     }
 

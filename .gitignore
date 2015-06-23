@@ -42,3 +42,8 @@ Network Trash Folder
 Temporary Items
 .apdisk
 web/web.html
+
+#unity temp folders
+Temp/
+web/
+obj/
