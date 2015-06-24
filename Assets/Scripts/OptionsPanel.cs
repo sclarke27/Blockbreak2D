@@ -14,6 +14,7 @@ public class OptionsPanel : MonoBehaviour
     public Slider sfxVolSlider;
     public Slider paddleSpeedSlider;
     public Toggle useAIToggle;
+    public GoogleAnalyticsV3 googleAnalytics;
     
 
     void Awake()
@@ -59,10 +60,23 @@ public class OptionsPanel : MonoBehaviour
         gameData.SetPlayerPaddleSpeed(paddleSpeedSlider.value);
         gameData.SetAIEnabled(useAIToggle.isOn);
         PopulateDefaultValues();
+        gameData.googleAnalytics.LogEvent(new EventHitBuilder()
+            .SetEventCategory("UIEvent")
+            .SetEventAction("updateOptions")
+            .SetEventLabel("Update Options"));
     }
 
     public void ShowOptionsPanel(bool showPanel)
     {
+        if (showPanel)
+        {
+            googleAnalytics.LogScreen("Options Panel - Show");
+        }
+        else
+        {
+            googleAnalytics.LogScreen("Options Panel - Hide");
+        }
+        
         gameObject.SetActive(showPanel);
         PopulateDefaultValues();
     }

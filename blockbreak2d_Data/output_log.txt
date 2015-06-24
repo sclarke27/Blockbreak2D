@@ -1,0 +1,416 @@
+Initialize engine version: 4.6.0f2 (b073107612b7)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics 4600 (ID=0x416)
+    Vendor:   Intel
+    VRAM:     0 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\new user\Documents\Blockbreak2D\blockbreak2d_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\new user\Documents\Blockbreak2D\blockbreak2d_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\new user\Documents\Blockbreak2D\blockbreak2d_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\new user\Documents\Blockbreak2D\blockbreak2d_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\new user\Documents\Blockbreak2D\blockbreak2d_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\new user\Documents\Blockbreak2D\blockbreak2d_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\new user\Documents\Blockbreak2D\blockbreak2d_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\new user\Documents\Blockbreak2D\blockbreak2d_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.057 seconds
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1920x1200 59Hz; virtual: 3840x1200 at -1920,0
+Platform assembly: C:\Users\new user\Documents\Blockbreak2D\blockbreak2d_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\new user\Documents\Blockbreak2D\blockbreak2d_Data\Managed\System.dll (this message is harmless)
+Initializing Google Analytics 0.1.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Platform is not Android or iOS - hits will be sent using measurement protocol.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Base URL for hits: https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Logging screen.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=appview&cd=StartScreen&did=GbOCSs&z=93
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Logging event.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=event&ec=Google+Analytics&ea=Auto+Instrumentation&el=Game+Launch&ev=0&did=GbOCSs&z=327
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Logging event.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=event&ec=UIEvent&ea=musicVolume&el=Set+Music+volume&ev=1&did=GbOCSs&z=399
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Logging event.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=event&ec=UIEvent&ea=sfxVolume&el=Set+SFX+volume&ev=1&did=GbOCSs&z=153
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Logging event.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=event&ec=UIEvent&ea=aiEnabled&el=AI+Paddle+Toggled&ev=1&did=GbOCSs&z=3
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Logging event.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=event&ec=UIEvent&ea=setDifficulty&el=Set+Difficulty&ev=3&did=GbOCSs&z=292
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Logging event.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=event&ec=UIEvent&ea=setPaddleSpeed&el=Set+Paddle+Speed&ev=0&did=GbOCSs&z=223
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Logging screen.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=appview&cd=Start+Screen&did=GbOCSs&sc=start&z=143
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Successfully sent Google Analytics hit.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Successfully sent Google Analytics hit.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Successfully sent Google Analytics hit.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Successfully sent Google Analytics hit.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Successfully sent Google Analytics hit.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Successfully sent Google Analytics hit.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Successfully sent Google Analytics hit.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Successfully sent Google Analytics hit.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Initializing Google Analytics 0.1.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Coroutine couldn't be started because the the game object 'GAv3' is inactive!
+ 
+(Filename:  Line: 826)
+
+Logging event.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=event&ec=UIEvent&ea=musicVolume&el=Set+Music+volume&ev=1&did=GbOCSs&z=18
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Coroutine couldn't be started because the the game object 'GAv3' is inactive!
+ 
+(Filename:  Line: 826)
+
+Logging event.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=event&ec=UIEvent&ea=sfxVolume&el=Set+SFX+volume&ev=1&did=GbOCSs&z=265
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Coroutine couldn't be started because the the game object 'GAv3' is inactive!
+ 
+(Filename:  Line: 826)
+
+Logging event.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=event&ec=UIEvent&ea=setPaddleSpeed&el=Set+Paddle+Speed&ev=5&did=GbOCSs&z=319
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Coroutine couldn't be started because the the game object 'GAv3' is inactive!
+ 
+(Filename:  Line: 826)
+
+Logging event.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=event&ec=UIEvent&ea=aiEnabled&el=AI+Paddle+Toggled&ev=0&did=GbOCSs&z=133
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Coroutine couldn't be started because the the game object 'GAv3' is inactive!
+ 
+(Filename:  Line: 826)
+
+Logging event.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=event&ec=UIEvent&ea=updateOptions&el=Update+Options&ev=0&did=GbOCSs&z=19
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Coroutine couldn't be started because the the game object 'GAv3' is inactive!
+ 
+(Filename:  Line: 826)
+
+Coroutine couldn't be started because the the game object 'GAv3' is inactive!
+ 
+(Filename:  Line: 826)
+
+Logging event.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=event&ec=GameplayEvent&ea=gamePaused&el=Game+Paused&ev=0&did=GbOCSs&z=200
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Coroutine couldn't be started because the the game object 'GAv3' is inactive!
+ 
+(Filename:  Line: 826)
+
+UnloadTime: 2.975607 ms
+Initializing Google Analytics 0.1.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Platform is not Android or iOS - hits will be sent using measurement protocol.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Base URL for hits: https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Logging screen.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=appview&cd=Level_00&did=GbOCSs&z=366
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 1001.
+Total: 0.930144 ms (FindLiveObjects: 0.028652 ms CreateObjectMapping: 0.010691 ms MarkObjects: 0.486668 ms  DeleteObjects: 0.009836 ms)
+
+Successfully sent Google Analytics hit.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Logging event.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=event&ec=GameplayEvent&ea=playerDied&el=Player+Died&ev=4&did=GbOCSs&z=222
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Successfully sent Google Analytics hit.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Logging event.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=event&ec=GameplayEvent&ea=playerDied&el=Player+Died&ev=3&did=GbOCSs&z=359
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Successfully sent Google Analytics hit.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Logging event.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=event&ec=GameplayEvent&ea=playerDied&el=Player+Died&ev=2&did=GbOCSs&z=109
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Successfully sent Google Analytics hit.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Logging event.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=event&ec=GameplayEvent&ea=playerDied&el=Player+Died&ev=1&did=GbOCSs&z=341
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Successfully sent Google Analytics hit.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Logging event.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=event&ec=GameplayEvent&ea=playerDied&el=Player+Died&ev=0&did=GbOCSs&z=89
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Logging event.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=event&ec=GameplayEvent&ea=gamePaused&el=Game+Paused&ev=0&did=GbOCSs&z=104
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+UnloadTime: 1.178183 ms
+Initializing Google Analytics 0.1.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 74 unused Assets to reduce memory usage. Loaded Objects now: 525.
+Total: 1.170057 ms (FindLiveObjects: 0.023520 ms CreateObjectMapping: 0.014540 ms MarkObjects: 0.254881 ms  DeleteObjects: 0.539270 ms)
+
+Logging screen.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=appview&cd=End+Screen&did=GbOCSs&z=118
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Successfully sent Google Analytics hit.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Logging event.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=event&ec=GameplayEvent&ea=newHighScore&el=New+High+Score&ev=950&did=GbOCSs&z=380
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Successfully sent Google Analytics hit.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Logging event.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=event&ec=GameplayEvent&ea=gamePaused&el=Game+Paused&ev=0&did=GbOCSs&z=75
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+UnloadTime: 1.414675 ms
+Initializing Google Analytics 0.1.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Platform is not Android or iOS - hits will be sent using measurement protocol.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Base URL for hits: https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Logging screen.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=appview&cd=StartScreen&did=GbOCSs&z=330
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Logging event.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=event&ec=Google+Analytics&ea=Auto+Instrumentation&el=Game+Launch&ev=0&did=GbOCSs&z=276
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 662.
+Total: 0.744543 ms (FindLiveObjects: 0.018816 ms CreateObjectMapping: 0.013684 ms MarkObjects: 0.363504 ms  DeleteObjects: 0.018389 ms)
+
+Logging screen.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=appview&cd=Start+Screen&did=GbOCSs&z=320
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Successfully sent Google Analytics hit.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Successfully sent Google Analytics hit.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Successfully sent Google Analytics hit.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Successfully sent Google Analytics hit.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Logging event.
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+https://www.google-analytics.com/collect?v=1&ul=en&sr=1920x1200&an=BlockAttack+Game&tid=UA-35415971-2%0d%0aUA-35415971-2%0d%0aUA-35415971-2&aid=com.couchlock.blockAttack&cid=858d3da730febee887cc30b739360616b74b17c4&av=0.6.23&t=event&ec=UIEvent&ea=quitGame&el=Quit+Game&ev=0&did=GbOCSs&z=363
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+

@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
     private Cursor cursor;
     private Ball playerBall;
     private MusicPlayer musicPlayer;
+    public GoogleAnalyticsV3 googleAnalytics;
     
 
     void Awake()
@@ -19,6 +20,7 @@ public class LevelManager : MonoBehaviour
         gameHUD = GameObject.FindObjectOfType<GameHUD>();
         playerBall = GameObject.FindObjectOfType<Ball>();
         musicPlayer = GameObject.FindObjectOfType<MusicPlayer>();
+        googleAnalytics.LogScreen(Application.loadedLevelName);
     }
 
     public void LoadLevel(string name)
@@ -48,6 +50,7 @@ public class LevelManager : MonoBehaviour
                 
             }
         }
+        
         Application.LoadLevel(levelName);
     }
 
@@ -72,6 +75,11 @@ public class LevelManager : MonoBehaviour
 
         gameData.PauseGame(false);
         Brick.breakableCount = 0;
+        googleAnalytics.LogEvent(new EventHitBuilder()
+            .SetEventCategory("UIEvent")
+            .SetEventAction("restartLevel")
+            .SetEventLabel("Restart Level"));
+
         Application.LoadLevel(Application.loadedLevel);
     }
 
@@ -88,6 +96,10 @@ public class LevelManager : MonoBehaviour
         musicPlayer.SetInMenu(false);
         gameData.PauseGame(false);
         Brick.breakableCount = 0;
+        googleAnalytics.LogEvent(new EventHitBuilder()
+            .SetEventCategory("GameplayEvent")
+            .SetEventAction("nextLevel")
+            .SetEventLabel("Load Next Level"));
         Application.LoadLevel(Application.loadedLevel + 1);
 
 
@@ -96,11 +108,15 @@ public class LevelManager : MonoBehaviour
     public void MainMenu()
     {
         musicPlayer.SetInMenu(true);
-        Application.LoadLevel("StartScreen");
+        LoadLevel("StartScreen");
     }
 
     public void QuitRequest()
     {
+        googleAnalytics.LogEvent(new EventHitBuilder()
+            .SetEventCategory("UIEvent")
+            .SetEventAction("quitGame")
+            .SetEventLabel("Quit Game"));
         Application.Quit();
     }
 
@@ -111,6 +127,12 @@ public class LevelManager : MonoBehaviour
         playerBall.LockBall();
         gameData.PauseGame(false);
         gameHUD.ShowLevelComplete();
+        googleAnalytics.LogEvent(new EventHitBuilder()
+            .SetEventCategory("UIEvent")
+            .SetEventAction("levelComplete")
+            .SetEventLabel(Application.loadedLevelName + " Complete")
+            .SetEventValue(gameData.GetPlayerScore()));
+        googleAnalytics.LogScreen("Level Complete");
     }
 
 
