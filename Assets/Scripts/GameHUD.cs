@@ -5,7 +5,7 @@ using System.Collections;
 public class GameHUD : MonoBehaviour
 {
 
-
+    public GoogleAnalyticsV3 googleAnalytics;
     public string scoreText = "Score: ";
     public Text scoreTextField;
     public string livesText = "Lives: ";
@@ -64,11 +64,13 @@ public class GameHUD : MonoBehaviour
             //pausePanel.SetActive(true);
             if (isStartMenu)
             {
+                gameData.GetGA().LogScreen("Start Screen");
                 SetupHighScoresPanel();
                 difficultySlider.value = gameData.GetDifficultyLevel();
             }
             if (isEndScreen)
             {
+                gameData.GetGA().LogScreen("End Screen");
                 SetupHighScoresPanel();
                 scoreTextField.text = gameData.GetPlayerScore().ToString();
                 //if player got high score, show name dialog instead of loading next level
@@ -157,6 +159,11 @@ public class GameHUD : MonoBehaviour
         {
             SetupHighScoresPanel();
         }
+        gameData.GetGA().LogEvent(new EventHitBuilder()
+            .SetEventCategory("GameplayEvent")
+            .SetEventAction("newHighScore")
+            .SetEventLabel("New High Score")
+            .SetEventValue(System.Convert.ToInt64(gameData.GetPlayerScore())));
     }
 
     public void CancelPlayerHighScore()

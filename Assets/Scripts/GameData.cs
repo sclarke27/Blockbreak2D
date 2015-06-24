@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
 public class GameData : MonoBehaviour {
 
     public static GameData instance;
@@ -14,6 +15,7 @@ public class GameData : MonoBehaviour {
     public float defaultDifficultyLevel = 1f;
     public float defaultPaddleSpeed = 0.5f;
     public int defaultPlayerLives = 5;
+    public GoogleAnalyticsV3 googleAnalytics;
 
     private bool useAI = false;
     private float difficultyLevel = 2f;
@@ -53,6 +55,12 @@ public class GameData : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+    }
+
+    void Start()
+    {
+        googleAnalytics.DispatchHits();
+        googleAnalytics.StartSession();
     }
 
     public void ResetPlayerScore()
@@ -164,6 +172,12 @@ public class GameData : MonoBehaviour {
         {
             Time.timeScale = 1;
         }
+        googleAnalytics.LogEvent(new EventHitBuilder()
+            .SetEventCategory("GameplayEvent")
+            .SetEventAction("gamePaused")
+            .SetEventLabel("Game Paused")
+            .SetEventValue((gamePaused) ? 1 : 0));
+
     }
 
     public bool GetAIEnabled()
@@ -175,6 +189,12 @@ public class GameData : MonoBehaviour {
     {
         PlayerPrefs.SetFloat(playerPrefTypes.useAI.ToString(), (enableAI) ? 1 : 0);
         useAI = enableAI;
+        googleAnalytics.LogEvent(new EventHitBuilder()
+            .SetEventCategory("UIEvent")
+            .SetEventAction("aiEnabled")
+            .SetEventLabel("AI Paddle Toggled")
+            .SetEventValue((useAI) ? 1 : 0));
+
     }
 
     public float GetMusicVolume()
@@ -182,10 +202,20 @@ public class GameData : MonoBehaviour {
         return currMusicVolume;
     }
 
+    public GoogleAnalyticsV3 GetGA()
+    {
+        return googleAnalytics;
+    }
+
     public void SetMusicVolume(float newVolume)
     {
         PlayerPrefs.SetFloat(playerPrefTypes.musicVolume.ToString(), newVolume);
         currMusicVolume = newVolume;
+        googleAnalytics.LogEvent(new EventHitBuilder()
+            .SetEventCategory("UIEvent")
+            .SetEventAction("musicVolume")
+            .SetEventLabel("Set Music volume")
+            .SetEventValue(System.Convert.ToInt64(currMusicVolume)));
     }
 
     public float GetSFXVolume()
@@ -197,6 +227,11 @@ public class GameData : MonoBehaviour {
     {
         PlayerPrefs.SetFloat(playerPrefTypes.sfxVolume.ToString(), newVolume);
         currSFXVolume = newVolume;
+        googleAnalytics.LogEvent(new EventHitBuilder()
+            .SetEventCategory("UIEvent")
+            .SetEventAction("sfxVolume")
+            .SetEventLabel("Set SFX volume")
+            .SetEventValue(System.Convert.ToInt64(currSFXVolume)));
     }
 
     public float GetDifficultyLevel()
@@ -208,6 +243,11 @@ public class GameData : MonoBehaviour {
     {
         PlayerPrefs.SetFloat(playerPrefTypes.difficultyLevel.ToString(), newDifficulty);
         difficultyLevel = newDifficulty;
+        googleAnalytics.LogEvent(new EventHitBuilder()
+            .SetEventCategory("UIEvent")
+            .SetEventAction("setDifficulty")
+            .SetEventLabel("Set Difficulty")
+            .SetEventValue(System.Convert.ToInt64(difficultyLevel)));
     }
 
     public float GetDefaultPaddleSpeed()
@@ -238,11 +278,21 @@ public class GameData : MonoBehaviour {
     public void LoseOneLife()
     {
         SetPlayerRemainingLives(playerLives - 1);
+        googleAnalytics.LogEvent(new EventHitBuilder()
+            .SetEventCategory("GameplayEvent")
+            .SetEventAction("playerDied")
+            .SetEventLabel("Player Died")
+            .SetEventValue(GetPlayerRemainingLives()));
     }
 
     public void GainOneLife()
     {
         SetPlayerRemainingLives(playerLives + 1);
+        googleAnalytics.LogEvent(new EventHitBuilder()
+            .SetEventCategory("GameplayEvent")
+            .SetEventAction("playerOneUp")
+            .SetEventLabel("Player One Up")
+            .SetEventValue(GetPlayerRemainingLives()));
     }
 
     public float GetPlayerPaddleSpeed()
@@ -253,6 +303,11 @@ public class GameData : MonoBehaviour {
     public void SetPlayerPaddleSpeed(float newSpeed)
     {
         playerPaddleSpeed = newSpeed;
+        googleAnalytics.LogEvent(new EventHitBuilder()
+            .SetEventCategory("UIEvent")
+            .SetEventAction("setPaddleSpeed")
+            .SetEventLabel("Set Paddle Speed")
+            .SetEventValue(GetPlayerRemainingLives()));
     }
 
 }
