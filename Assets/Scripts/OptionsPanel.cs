@@ -12,6 +12,7 @@ public class OptionsPanel : MonoBehaviour
     // player pref UI Fields
     public Slider musicVolSlider;
     public Slider sfxVolSlider;
+    public Slider paddleSpeedSlider;
     public Toggle useAIToggle;
     
 
@@ -32,11 +33,13 @@ public class OptionsPanel : MonoBehaviour
     {
         gameData = GameObject.FindObjectOfType<GameData>();
         PopulateDefaultValues();
-        Debug.Log("Music volume:" + gameData.GetMusicVolume());
-        Debug.Log("SFX volume:" + gameData.GetSFXVolume());
-        Debug.Log("Use AI:" + gameData.GetAIEnabled());
     }
 
+
+    void Update()
+    {
+        
+    }
 
     void PopulateDefaultValues()
     {
@@ -44,21 +47,18 @@ public class OptionsPanel : MonoBehaviour
         {
             musicVolSlider.value = gameData.GetMusicVolume();
             sfxVolSlider.value = gameData.GetSFXVolume();
+            paddleSpeedSlider.value = gameData.GetPlayerPaddleSpeed();
             useAIToggle.isOn = gameData.GetAIEnabled();
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void SaveSelectedOptions()
     {
         gameData.SetMusicVolume(musicVolSlider.value);
         gameData.SetSFXVolume(sfxVolSlider.value);
+        gameData.SetPlayerPaddleSpeed(paddleSpeedSlider.value);
         gameData.SetAIEnabled(useAIToggle.isOn);
+        PopulateDefaultValues();
     }
 
     public void ShowOptionsPanel(bool showPanel)

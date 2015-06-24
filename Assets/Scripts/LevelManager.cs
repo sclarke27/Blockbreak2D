@@ -96,7 +96,7 @@ public class LevelManager : MonoBehaviour
     public void MainMenu()
     {
         musicPlayer.SetInMenu(true);
-        Application.LoadLevel("StartMenu");
+        Application.LoadLevel("StartScreen");
     }
 
     public void QuitRequest()

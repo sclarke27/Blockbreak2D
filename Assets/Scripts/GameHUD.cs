@@ -18,6 +18,7 @@ public class GameHUD : MonoBehaviour
     public Slider difficultySlider;
     public bool isMenuScreen;
     public bool isStartMenu = false;
+    public bool isEndScreen = false;
     public Texture2D defaultCursor;
     public bool isFirstLevel = false;
 
@@ -60,14 +61,16 @@ public class GameHUD : MonoBehaviour
             instructionsPanel.SetActive(false);
         }
         else {
-            pausePanel.SetActive(true);
+            //pausePanel.SetActive(true);
             if (isStartMenu)
             {
                 SetupHighScoresPanel();
                 difficultySlider.value = gameData.GetDifficultyLevel();
             }
-            if (Application.loadedLevelName == "WinScreen")
+            if (isEndScreen)
             {
+                SetupHighScoresPanel();
+                scoreTextField.text = gameData.GetPlayerScore().ToString();
                 //if player got high score, show name dialog instead of loading next level
                 if (gameData.GetPlayerScoreRank() < 26)
                 {
@@ -85,15 +88,20 @@ public class GameHUD : MonoBehaviour
     {
         ArrayList highScores = gameData.GetHighScores();
         int scoreCount = (highScores.Count > 0) ? int.Parse(highScores[0].ToString().Split(',')[1]) : 0;
-        Debug.Log(scoreCount);
         if (scoreCount == 0)
         {
-            instructionsPanel.SetActive(true);
+            if (instructionsPanel != null)
+            {
+                instructionsPanel.SetActive(true);
+            }
             highScorePanel.SetActive(false);
         }
         else
         {
-            instructionsPanel.SetActive(false);
+            if (instructionsPanel != null)
+            {
+                instructionsPanel.SetActive(false);
+            }
             highScorePanel.SetActive(true); 
             highScoreNames.text = "";
             highScoreScores.text = "";
@@ -145,12 +153,19 @@ public class GameHUD : MonoBehaviour
                 Application.LoadLevel(nextLevel);
             }
         }
+        if (isEndScreen)
+        {
+            SetupHighScoresPanel();
+        }
     }
 
     public void CancelPlayerHighScore()
     {
         ToggleHighScoreNameDialog(false, "");
-        Application.LoadLevel(nextLevel);
+        if (!isEndScreen)
+        {
+            Application.LoadLevel(nextLevel);
+        }
     }
 
     public void SetPlayerReady(bool isReady)
@@ -170,64 +185,75 @@ public class GameHUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isMenuScreen && IsPlayerReady())
+        if (!isMenuScreen)
         {
-            if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
-            {
-                gameData.PauseGame(!gameData.IsGamePaused());
-                if (gameData.IsGamePaused())
-                {
-                    Screen.showCursor = true;
-                }
-                else
-                {
-                    Screen.showCursor = false;
-                }
-            }
-
-            scoreTextField.text = scoreText + gameData.GetPlayerScore();
+            //populate HUD with default values
+            int playerScore = gameData.GetPlayerScore();
+            scoreTextField.text = ((playerScore > 9999) ? playerScore.ToString() : (scoreText + playerScore));
             livesTextField.text = livesText + gameData.GetPlayerRemainingLives();
+            if (!IsPlayerReady())
+            {
 
-            if (gameData.IsGamePaused())
-            {
-                pausePanel.SetActive(true);
-                pausedTextField.text = pausedText;
-                pausedTextFieldShadow.text = pausedText;
-            }
-            else
-            {
-                pausePanel.SetActive(false);
-                pausedTextField.text = "";
-                pausedTextFieldShadow.text = "";
-            }
-            readyPanel.SetActive(false);
-            instructionsPanel.SetActive(false);
-        }
-        else
-        {
-            if (!isMenuScreen)
-            {
+                //wait for player to hit space bar
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     Screen.showCursor = false;
                     hasSeenInstructions = true;
                     SetPlayerReady(true);
                 }
-                scoreTextField.text = scoreText + gameData.GetPlayerScore();
-                livesTextField.text = livesText + gameData.GetPlayerRemainingLives();
+
+                //if player has not seen the instructions, show them else show ready panel
                 if (isFirstLevel && !hasSeenInstructions)
                 {
                     instructionsPanel.SetActive(true);
                     readyPanel.SetActive(false);
-                    
+
                 }
                 else
                 {
                     instructionsPanel.SetActive(false);
                     readyPanel.SetActive(true);
                 }
-                
+
             }
+            else
+            {
+                //listen for pause keys
+                if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
+                {
+                    gameData.PauseGame(!gameData.IsGamePaused());
+                    if (gameData.IsGamePaused())
+                    {
+                        Screen.showCursor = true;
+                    }
+                    else
+                    {
+                        Screen.showCursor = false;
+                    }
+                }
+
+                //if game is paused, show the paused panel else dont
+                if (gameData.IsGamePaused())
+                {
+                    pausePanel.SetActive(true);
+                    pausedTextField.text = pausedText;
+                    pausedTextFieldShadow.text = pausedText;
+                }
+                else
+                {
+                    pausePanel.SetActive(false);
+                    pausedTextField.text = "";
+                    pausedTextFieldShadow.text = "";
+                }
+
+                //hide other panels
+                readyPanel.SetActive(false);
+                instructionsPanel.SetActive(false);
+            }
+        }
+        else
+        {
+            //we are in a menu screen
             Screen.showCursor = true;
         }
     }
