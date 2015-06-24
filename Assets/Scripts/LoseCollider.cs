@@ -25,7 +25,7 @@ public class LoseCollider : MonoBehaviour
         gameData.LoseOneLife();
         if (gameData.GetPlayerRemainingLives() <= 0)
         {
-            levelManager.LoadLevel("LoseScreen");
+            levelManager.LoadLevel("StopScreen");
         }
         else
         {
