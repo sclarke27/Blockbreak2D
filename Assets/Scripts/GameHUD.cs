@@ -64,13 +64,13 @@ public class GameHUD : MonoBehaviour
             //pausePanel.SetActive(true);
             if (isStartMenu)
             {
-                gameData.GetGA().LogScreen("Start Screen");
+                googleAnalytics.LogScreen("Start Screen");
                 SetupHighScoresPanel();
                 difficultySlider.value = gameData.GetDifficultyLevel();
             }
             if (isEndScreen)
             {
-                gameData.GetGA().LogScreen("End Screen");
+                googleAnalytics.LogScreen("End Screen");
                 SetupHighScoresPanel();
                 scoreTextField.text = gameData.GetPlayerScore().ToString();
                 //if player got high score, show name dialog instead of loading next level
@@ -159,7 +159,7 @@ public class GameHUD : MonoBehaviour
         {
             SetupHighScoresPanel();
         }
-        gameData.GetGA().LogEvent(new EventHitBuilder()
+        googleAnalytics.LogEvent(new EventHitBuilder()
             .SetEventCategory("GameplayEvent")
             .SetEventAction("newHighScore")
             .SetEventLabel("New High Score")

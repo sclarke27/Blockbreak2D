@@ -172,11 +172,13 @@ public class GameData : MonoBehaviour {
         {
             Time.timeScale = 1;
         }
-        googleAnalytics.LogEvent(new EventHitBuilder()
-            .SetEventCategory("GameplayEvent")
-            .SetEventAction("gamePaused")
-            .SetEventLabel("Game Paused")
-            .SetEventValue((gamePaused) ? 1 : 0));
+        if (googleAnalytics != null)
+        {
+            googleAnalytics.LogEvent(new EventHitBuilder()
+                .SetEventCategory("GameplayEvent")
+                .SetEventAction("gamePaused")
+                .SetEventLabel("Game Paused"));
+        }
 
     }
 
