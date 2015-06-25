@@ -31,12 +31,15 @@ public class GameHUD : MonoBehaviour
     public Text highScoreNames;
     public Text highScoreScores;
     public InputField playerNameInput;
+    public Button paddleLeftUIButton;
+    public Button paddleRightUIButton;
 
     private GameData gameData;
     //private LevelManager levelManager;
     private bool playerReady = false;
     private string nextLevel;
     private bool hasSeenInstructions = false;
+    private Ball ball;
     
 
     void Awake()
@@ -59,6 +62,8 @@ public class GameHUD : MonoBehaviour
             pausePanel.SetActive(false);
             readyPanel.SetActive(false);
             instructionsPanel.SetActive(false);
+            ball = GameObject.FindObjectOfType<Ball>();    
+
         }
         else {
             //pausePanel.SetActive(true);
@@ -85,6 +90,27 @@ public class GameHUD : MonoBehaviour
         }
         
     }
+
+    public void HandlePaddleUIButtons(string buttonEvent)
+    {
+        switch (buttonEvent)
+        {
+            case "leftUp":
+                gameData.SetPaddle("left", false);
+                break;
+            case "leftDown":
+                gameData.SetPaddle("left", true);
+                break;
+            case "rightUp":
+                gameData.SetPaddle("right", false);
+                break;
+            case "rightDown":
+                gameData.SetPaddle("right", true);
+                break;
+        }
+    }
+
+
 
     private void SetupHighScoresPanel() 
     {
@@ -189,6 +215,14 @@ public class GameHUD : MonoBehaviour
         return playerReady;
     }
 
+    public void HandlePlayerReady()
+    {
+        Screen.showCursor = false;
+        hasSeenInstructions = true;
+        SetPlayerReady(true);
+        ball.LaunchBall();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -204,9 +238,7 @@ public class GameHUD : MonoBehaviour
                 //wait for player to hit space bar
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    Screen.showCursor = false;
-                    hasSeenInstructions = true;
-                    SetPlayerReady(true);
+                    HandlePlayerReady();
                 }
 
                 //if player has not seen the instructions, show them else show ready panel
@@ -226,7 +258,7 @@ public class GameHUD : MonoBehaviour
             else
             {
                 //listen for pause keys
-                if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
+                if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKey(KeyCode.Menu))
                 {
                     gameData.PauseGame(!gameData.IsGamePaused());
                     if (gameData.IsGamePaused())
