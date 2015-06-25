@@ -20,11 +20,12 @@ public class LevelManager : MonoBehaviour
         gameHUD = GameObject.FindObjectOfType<GameHUD>();
         playerBall = GameObject.FindObjectOfType<Ball>();
         musicPlayer = GameObject.FindObjectOfType<MusicPlayer>();
-        googleAnalytics.LogScreen(Application.loadedLevelName);
+        
     }
 
     public void LoadLevel(string name)
     {
+        
         Brick.breakableCount = 0;
         gameData.PauseGame(false);
         
@@ -50,7 +51,7 @@ public class LevelManager : MonoBehaviour
                 
             }
         }
-        
+        googleAnalytics.LogScreen(levelName);
         Application.LoadLevel(levelName);
     }
 
@@ -125,7 +126,7 @@ public class LevelManager : MonoBehaviour
         musicPlayer.SetInMenu(true);
         playerBall.ShowBallDestruction();
         playerBall.LockBall();
-        gameData.PauseGame(false);
+        gameData.PauseGame(true);
         gameHUD.ShowLevelComplete();
         googleAnalytics.LogEvent(new EventHitBuilder()
             .SetEventCategory("UIEvent")
