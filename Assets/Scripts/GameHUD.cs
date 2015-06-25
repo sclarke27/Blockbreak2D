@@ -62,10 +62,12 @@ public class GameHUD : MonoBehaviour
             pausePanel.SetActive(false);
             readyPanel.SetActive(false);
             instructionsPanel.SetActive(false);
-            ball = GameObject.FindObjectOfType<Ball>();    
+            ball = GameObject.FindObjectOfType<Ball>();
+            googleAnalytics.LogScreen("Game Screen");
 
         }
         else {
+            googleAnalytics.LogScreen("Menu Screen");
             //pausePanel.SetActive(true);
             if (isStartMenu)
             {

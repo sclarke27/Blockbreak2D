@@ -62,8 +62,12 @@ public class GameData : MonoBehaviour {
 
     void Start()
     {
-        googleAnalytics.DispatchHits();
         googleAnalytics.StartSession();
+    }
+
+    void Update()
+    {
+        googleAnalytics.DispatchHits();
     }
 
     public void ResetPlayerScore()

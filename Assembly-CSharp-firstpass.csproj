@@ -63,6 +63,7 @@
      <Compile Include="Assets\Plugins\GoogleAnalyticsV3\HitBuilders\SocialHitBuilder.cs" />
      <Compile Include="Assets\Plugins\GoogleAnalyticsV3\HitBuilders\TimingHitBuilder.cs" />
      <Compile Include="Assets\Plugins\GoogleAnalyticsV3\HitBuilders\TransactionHitBuilder.cs" />
+     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>
