@@ -39,9 +39,20 @@ public class Ball : MonoBehaviour
 
     }
 
+    public void LaunchBall()
+    {
+        if (isLocked)
+        {
+            this.transform.position = paddle.transform.position + paddleToBallVector;
+            isLocked = false;
+            this.rigidbody2D.velocity = new Vector2(0f, (gameData.ballStartingVelocity + gameData.GetDifficultyLevel()));
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
+        /*
         if (isLocked)
         {
             this.transform.position = paddle.transform.position + paddleToBallVector;
@@ -58,6 +69,7 @@ public class Ball : MonoBehaviour
                 isLocked = true;
             }
         }
+         */
     }
 
 
