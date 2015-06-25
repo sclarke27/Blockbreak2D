@@ -13,7 +13,7 @@ public class GameData : MonoBehaviour {
     public float defaultSFXVolume = 1f;
     public float defaultMusicVolume = 0.14f;
     public float defaultDifficultyLevel = 1f;
-    public float defaultPaddleSpeed = 0.3f;
+    public float defaultPaddleSpeed = 0.5f;
     public int defaultPlayerLives = 5;
     public GoogleAnalyticsV3 googleAnalytics;
 
@@ -27,9 +27,6 @@ public class GameData : MonoBehaviour {
     private float currSFXVolume;
     private int totalHighScores = 25;
     private ArrayList highScoreList = new ArrayList();
-
-    private bool leftPaddledown = false;
-    private bool rightPaddledown = false;
 
     public enum playerPrefTypes
     {
@@ -313,30 +310,6 @@ public class GameData : MonoBehaviour {
             .SetEventAction("setPaddleSpeed")
             .SetEventLabel("Set Paddle Speed")
             .SetEventValue(GetPlayerRemainingLives()));
-    }
-
-    public bool IsLeftPaddledown()
-    {
-        return leftPaddledown;
-    }
-
-    public bool IsRightPaddledown()
-    {
-        return rightPaddledown;
-    }
-
-    public void SetPaddle(string name, bool isdown)
-    {
-        switch (name)
-        {
-            case "left":
-                leftPaddledown = isdown;
-                break;
-            case "right":
-                rightPaddledown = isdown;
-                break;
-
-        }
     }
 
 }

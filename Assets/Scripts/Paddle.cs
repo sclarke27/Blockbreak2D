@@ -50,11 +50,11 @@ public class Paddle : MonoBehaviour
                 }
                 else
                 {
-                    if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A) || gameData.IsLeftPaddledown())
+                    if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
                     {
                         paddlePos.x = paddlePos.x - (gameData.GetPlayerPaddleSpeed());
                     }
-                    if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D) || gameData.IsRightPaddledown())
+                    if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
                     {
                         paddlePos.x = paddlePos.x + (gameData.GetPlayerPaddleSpeed());
                     }
