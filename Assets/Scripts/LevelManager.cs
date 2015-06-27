@@ -25,6 +25,9 @@ public class LevelManager : MonoBehaviour
 
     public void LoadLevel(string name)
     {
+        gameData.SetPaddle("right", false);
+        gameData.SetPaddle("left", false);
+
         
         Brick.breakableCount = 0;
         gameData.PauseGame(false);
@@ -73,6 +76,8 @@ public class LevelManager : MonoBehaviour
             gameData.ResetPlayerScore();
             gameData.ResetPlayerLives();
         }
+        gameData.SetPaddle("right", false);
+        gameData.SetPaddle("left", false);
 
         gameData.PauseGame(false);
         Brick.breakableCount = 0;
@@ -87,6 +92,8 @@ public class LevelManager : MonoBehaviour
     public void ResetPlayer()
     {
         //gameData.PauseGame(false);
+        gameData.SetPaddle("right", false);
+        gameData.SetPaddle("left", false);
         gameHUD.SetPlayerReady(false);
         playerBall.ShowBallDestruction();
         playerBall.LockBall();

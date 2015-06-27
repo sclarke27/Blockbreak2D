@@ -28,6 +28,7 @@ public class GameHUD : MonoBehaviour
     public GameObject instructionsPanel;
     public GameObject highScorePanel;
     public GameObject nameInputPanel;
+    public GameObject mobileOverlayPanel;
     public Text highScoreNames;
     public Text highScoreScores;
     public InputField playerNameInput;
@@ -40,19 +41,28 @@ public class GameHUD : MonoBehaviour
     private string nextLevel;
     private bool hasSeenInstructions = false;
     private Ball ball;
+
     
 
     void Awake()
     {
         gameData = GameObject.FindObjectOfType<GameData>();
         //levelManager = GameObject.FindObjectOfType<LevelManager>();
+
+        if (!isMenuScreen && (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer))
+        {
+            mobileOverlayPanel.SetActive(true);
+        }
+        else
+        {
+            mobileOverlayPanel.SetActive(false);
+        }
+
     }
 
     // Use this for initialization
     void Start()
     {
-        
-        
         if (!isMenuScreen)
         {
             scoreTextField.text = "";
@@ -67,8 +77,6 @@ public class GameHUD : MonoBehaviour
 
         }
         else {
-            googleAnalytics.LogScreen("Menu Screen");
-            //pausePanel.SetActive(true);
             if (isStartMenu)
             {
                 googleAnalytics.LogScreen("Start Screen");
@@ -234,6 +242,24 @@ public class GameHUD : MonoBehaviour
             int playerScore = gameData.GetPlayerScore();
             scoreTextField.text = ((playerScore > 9999) ? playerScore.ToString() : (scoreText + playerScore));
             livesTextField.text = livesText + gameData.GetPlayerRemainingLives();
+
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) || gameData.IsLeftPaddledown())
+            {
+                gameData.SetPaddle("left", true);
+            }
+            if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A) || !gameData.IsLeftPaddledown())
+            {
+                gameData.SetPaddle("left", false);
+            }
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D) || gameData.IsRightPaddledown())
+            {
+                gameData.SetPaddle("right", true);
+            }
+            if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D) || !gameData.IsRightPaddledown())
+            {
+                gameData.SetPaddle("right", false);
+            }
+
             if (!IsPlayerReady())
             {
 
@@ -273,6 +299,8 @@ public class GameHUD : MonoBehaviour
                     }
                 }
 
+
+
                 //if game is paused, show the paused panel else dont
                 if (gameData.IsGamePaused())
                 {
@@ -285,6 +313,7 @@ public class GameHUD : MonoBehaviour
                     pausePanel.SetActive(false);
                     pausedTextField.text = "";
                     pausedTextFieldShadow.text = "";
+ 
                 }
 
                 //hide other panels
