@@ -11,7 +11,8 @@ public class Ball : MonoBehaviour
     public AudioSource ballDestructionSound;
     public GameObject ballBreakParticles;
 
-    private float minSpeed = 3f;
+
+    private float minSpeed = 4f;
     private float maxSpeed = 10f;
     private ArrayList veloHistoryX = new ArrayList();
     private ArrayList veloHistoryY = new ArrayList();
@@ -53,9 +54,10 @@ public class Ball : MonoBehaviour
         {
             this.transform.position = paddle.transform.position + paddleToBallVector;
             isLocked = false;
-            this.rigidbody2D.velocity = new Vector2(0f, (gameData.ballStartingVelocity + gameData.GetDifficultyLevel()));
+            this.rigidbody2D.velocity = new Vector2(0f, (gameData.GetPlayerBallStartSpeed() + gameData.GetDifficultyLevel()));
         }
     }
+
 
     public void AddSpin(float spinAmount) {
         if (!isLocked)
@@ -72,16 +74,20 @@ public class Ball : MonoBehaviour
         {
             float velocityX = this.rigidbody2D.velocity.x;
             float velocityY = this.rigidbody2D.velocity.y;
-            float currX = this.rigidbody2D.position.x;
-            float currY = this.rigidbody2D.position.y;
-            float newX = currX + velocityX;
-            float newY = currY + velocityY;
+            //float currX = this.rigidbody2D.position.x;
+            //float currY = this.rigidbody2D.position.y;
+            //float newX = currX + velocityX;
+            //float newY = currY + velocityY;
+            float avgXSpeed = ((velocityX < 0) ? (velocityX * -1) : (velocityX));
+            float avgYSpeed = ((velocityY < 0) ? (velocityY * -1) : (velocityY));
+            float currAvgSpeed = (avgXSpeed + avgYSpeed) / 2;
+            //Debug.Log(currAvgSpeed);
 
-            float diff = Mathf.Sqrt(Mathf.Pow((currX - newX), 2) + Mathf.Pow((currY - newY), 2));
-            if (diff > maxSpeed)
+            float diff = 0;// Mathf.Sqrt(Mathf.Pow((currX - newX), 2) + Mathf.Pow((currY - newY), 2));
+            if (currAvgSpeed > maxSpeed)
             {
                 //Debug.Log("X:" + velocityX + " Y:" + velocityY + " diff:" + diff);
-                diff = diff - maxSpeed;
+                diff = maxSpeed;
                 if (velocityX * 1 > 10)
                 {
                     velocityX = (velocityX > 0) ? (Mathf.Clamp((velocityX - diff), 0, velocityX)) : (Mathf.Clamp((velocityX + diff), velocityX, 0));
@@ -93,25 +99,33 @@ public class Ball : MonoBehaviour
                 }
 
                 //Debug.Log("X:" + velocityX + " Y:" + velocityY + " diff:" + diff);
-                //Debug.Log("Too fast");
+                Debug.Log("Too fast");
             }
-            if (diff < minSpeed)
+            if (currAvgSpeed < minSpeed)
             {
-                diff = maxSpeed - diff;
-                if (velocityX * 1 > 10)
+                diff = minSpeed;
+                if (avgXSpeed <= minSpeed && avgYSpeed <= minSpeed)
                 {
-                    velocityX = (velocityX > 0) ? (Mathf.Clamp((velocityX + diff), 0, velocityX)) : (Mathf.Clamp((velocityX - diff), velocityX, 0));
+                    velocityX = (velocityX > 0) ? minSpeed : (minSpeed * -1); ;// (velocityX > 0) ? (Mathf.Clamp((velocityX + diff), 0, velocityX)) : (Mathf.Clamp((velocityX - diff), velocityX, 0));
+                    velocityY = (velocityY > 0) ? minSpeed : (minSpeed * -1); ;//(velocityY > 0) ? (Mathf.Clamp((velocityY + diff), 0, velocityY)) : (Mathf.Clamp((velocityY - diff), velocityY, 0));
                 }
-
-                if (velocityY * 1 > 10)
+                if (avgXSpeed < minSpeed && avgYSpeed > minSpeed)
                 {
-                    velocityY = (velocityY > 0) ? (Mathf.Clamp((velocityY + diff), 0, velocityY)) : (Mathf.Clamp((velocityY - diff), velocityY, 0));
+                    velocityX = (velocityX > 0) ? minSpeed : (minSpeed * -1);// (velocityX > 0) ? (Mathf.Clamp((velocityX + diff), 0, velocityX)) : (Mathf.Clamp((velocityX - diff), velocityX, 0));
+                }
+                if (avgYSpeed < minSpeed && avgXSpeed > minSpeed)
+                {
+                    velocityY = (velocityY > 0) ? minSpeed : (minSpeed * -1);// (velocityX > 0) ? (Mathf.Clamp((velocityX + diff), 0, velocityX)) : (Mathf.Clamp((velocityX - diff), velocityX, 0));
                 }
 
                 //Debug.Log("X:" + velocityX + " Y:" + velocityY + " diff:" + diff);
                 //Debug.Log("Too fast");
-                Debug.Log("X:" + velocityX + " Y:" + velocityY + " diff:" + diff);
+                //Debug.Log("X:" + velocityX + " Y:" + velocityY + " diff:" + diff);
                 Debug.Log("Too slow");
+            }
+            else
+            {
+                //Debug.Log("diff:" + diff);
             }
 
             this.rigidbody2D.velocity = new Vector2(velocityX, velocityY);
@@ -120,31 +134,14 @@ public class Ball : MonoBehaviour
         else
         {
             this.transform.position = new Vector2(paddle.transform.position.x, paddle.transform.position.y + paddleToBallVector.y);
+            this.rigidbody2D.velocity = new Vector2(0f, 0f);
+            this.rigidbody2D.rotation = 0f;
         }
     }
 
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        //float speedMultplier = gameData.GetDifficultyLevel() / 10;
-        //Vector2 tweak = new Vector2(0f, Random.Range(gameData.ballBounceSideVariance, gameData.ballBounceMaxVelocity + speedMultplier));
-        float velocityX = this.rigidbody2D.velocity.x;
-        float velocityY = this.rigidbody2D.velocity.y;
-        float currX = this.rigidbody2D.position.x;
-        float currY = this.rigidbody2D.position.y;
-        float newX = currX + velocityX;
-        float newY = currY + velocityY;
-
-        float diff = Mathf.Sqrt(Mathf.Pow((currX- newX), 2) + Mathf.Pow((currY- newY), 2));
-
-        if (velocityY >= 7.4 && velocityY <= 7.6)
-        {
-            velocityY = Mathf.Round(velocityY);
-        }
-
-        
-
-        this.rigidbody2D.velocity = new Vector2(velocityX, velocityY);
 
         if (!isLocked)
         {

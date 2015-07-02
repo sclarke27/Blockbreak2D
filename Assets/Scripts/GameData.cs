@@ -7,21 +7,20 @@ public class GameData : MonoBehaviour {
 
     public static GameData instance;
     public int levelUnitPixelWidth = 16;
-    public float ballStartingVelocity = 7.0f;
-    //public float ballBounceMaxVelocity = 0.2f;
-    //public float ballBounceSideVariance = 0f;
     public float defaultSFXVolume = 1f;
     public float defaultMusicVolume = 0.14f;
     public float defaultDifficultyLevel = 1f;
     public float defaultPaddleSpeed = 0.3f;
     public int defaultPlayerLives = 5;
-    public GoogleAnalyticsV3 googleAnalytics;
+    public GameAnalytics gameAnalytics;
+    public AudioSource collect1UpSound;
 
+    private float ballStartingVelocity = 7.0f;
     private bool useAI = false;
     private float difficultyLevel = 2f;
     private int playerScore = 0;
     private int playerLives = 0;
-    public float playerPaddleSpeed;
+    private float playerPaddleSpeed;
     private bool gamePaused;
     private float currMusicVolume;
     private float currSFXVolume;
@@ -62,12 +61,12 @@ public class GameData : MonoBehaviour {
 
     void Start()
     {
-        googleAnalytics.StartSession();
+        
     }
 
     void Update()
     {
-        googleAnalytics.DispatchHits();
+        
     }
 
     public void ResetPlayerScore()
@@ -179,12 +178,9 @@ public class GameData : MonoBehaviour {
         {
             Time.timeScale = 1;
         }
-        if (googleAnalytics != null)
+        if (gameAnalytics != null)
         {
-            googleAnalytics.LogEvent(new EventHitBuilder()
-                .SetEventCategory("GameplayEvent")
-                .SetEventAction("gamePaused")
-                .SetEventLabel("Game Paused"));
+            gameAnalytics.LogEvent(GameAnalytics.gaEventCategories.GameEvent, "gamePaused", "Game Paused");
         }
 
     }
@@ -198,11 +194,11 @@ public class GameData : MonoBehaviour {
     {
         PlayerPrefs.SetFloat(playerPrefTypes.useAI.ToString(), (enableAI) ? 1 : 0);
         useAI = enableAI;
-        googleAnalytics.LogEvent(new EventHitBuilder()
-            .SetEventCategory("UIEvent")
-            .SetEventAction("aiEnabled")
-            .SetEventLabel("AI Paddle Toggled")
-            .SetEventValue((useAI) ? 1 : 0));
+
+        if (gameAnalytics != null)
+        {
+            gameAnalytics.LogEvent(GameAnalytics.gaEventCategories.UIEvent, "aiEnabled", "AI Paddle Toggled", ((useAI) ? 1 : 0));
+        }
 
     }
 
@@ -211,20 +207,14 @@ public class GameData : MonoBehaviour {
         return currMusicVolume;
     }
 
-    public GoogleAnalyticsV3 GetGA()
-    {
-        return googleAnalytics;
-    }
-
     public void SetMusicVolume(float newVolume)
     {
         PlayerPrefs.SetFloat(playerPrefTypes.musicVolume.ToString(), newVolume);
         currMusicVolume = newVolume;
-        googleAnalytics.LogEvent(new EventHitBuilder()
-            .SetEventCategory("UIEvent")
-            .SetEventAction("musicVolume")
-            .SetEventLabel("Set Music volume")
-            .SetEventValue(System.Convert.ToInt64(currMusicVolume)));
+        if (gameAnalytics != null)
+        {
+            gameAnalytics.LogEvent(GameAnalytics.gaEventCategories.UIEvent, "musicVolume", "Set Music volume", (System.Convert.ToInt64(currMusicVolume)));
+        }
     }
 
     public float GetSFXVolume()
@@ -236,11 +226,11 @@ public class GameData : MonoBehaviour {
     {
         PlayerPrefs.SetFloat(playerPrefTypes.sfxVolume.ToString(), newVolume);
         currSFXVolume = newVolume;
-        googleAnalytics.LogEvent(new EventHitBuilder()
-            .SetEventCategory("UIEvent")
-            .SetEventAction("sfxVolume")
-            .SetEventLabel("Set SFX volume")
-            .SetEventValue(System.Convert.ToInt64(currSFXVolume)));
+        if (gameAnalytics != null)
+        {
+            gameAnalytics.LogEvent(GameAnalytics.gaEventCategories.UIEvent, "sfxVolume", "Set SFX volume", (System.Convert.ToInt64(currSFXVolume)));
+        }
+
     }
 
     public float GetDifficultyLevel()
@@ -252,11 +242,10 @@ public class GameData : MonoBehaviour {
     {
         PlayerPrefs.SetFloat(playerPrefTypes.difficultyLevel.ToString(), newDifficulty);
         difficultyLevel = newDifficulty;
-        googleAnalytics.LogEvent(new EventHitBuilder()
-            .SetEventCategory("UIEvent")
-            .SetEventAction("setDifficulty")
-            .SetEventLabel("Set Difficulty")
-            .SetEventValue(System.Convert.ToInt64(difficultyLevel)));
+        if (gameAnalytics != null)
+        {
+            gameAnalytics.LogEvent(GameAnalytics.gaEventCategories.UIEvent, "setDifficulty", "Set Difficulty", (System.Convert.ToInt64(difficultyLevel)));
+        }
     }
 
     public float GetDefaultPaddleSpeed()
@@ -287,21 +276,20 @@ public class GameData : MonoBehaviour {
     public void LoseOneLife()
     {
         SetPlayerRemainingLives(playerLives - 1);
-        googleAnalytics.LogEvent(new EventHitBuilder()
-            .SetEventCategory("GameplayEvent")
-            .SetEventAction("playerDied")
-            .SetEventLabel("Player Died")
-            .SetEventValue(GetPlayerRemainingLives()));
+        if (gameAnalytics != null)
+        {
+            gameAnalytics.LogEvent(GameAnalytics.gaEventCategories.GameEvent, "playerDied", "Player Died", GetPlayerRemainingLives());
+        }
     }
 
     public void GainOneLife()
     {
+        collect1UpSound.Play();
         SetPlayerRemainingLives(playerLives + 1);
-        googleAnalytics.LogEvent(new EventHitBuilder()
-            .SetEventCategory("GameplayEvent")
-            .SetEventAction("playerOneUp")
-            .SetEventLabel("Player One Up")
-            .SetEventValue(GetPlayerRemainingLives()));
+        if (gameAnalytics != null)
+        {
+            gameAnalytics.LogEvent(GameAnalytics.gaEventCategories.GameEvent, "playerOneUp", "Player 1-up", GetPlayerRemainingLives());
+        }
     }
 
     public float GetPlayerPaddleSpeed()
@@ -309,14 +297,19 @@ public class GameData : MonoBehaviour {
         return playerPaddleSpeed;
     }
 
+    public float GetPlayerBallStartSpeed()
+    {
+        return ballStartingVelocity;
+    }
+
     public void SetPlayerPaddleSpeed(float newSpeed)
     {
         playerPaddleSpeed = newSpeed;
-        googleAnalytics.LogEvent(new EventHitBuilder()
-            .SetEventCategory("UIEvent")
-            .SetEventAction("setPaddleSpeed")
-            .SetEventLabel("Set Paddle Speed")
-            .SetEventValue(GetPlayerRemainingLives()));
+        if (gameAnalytics != null)
+        {
+            gameAnalytics.LogEvent(GameAnalytics.gaEventCategories.UIEvent, "setPaddleSpeed", "Set Paddle Speed", (System.Convert.ToInt64(GetPlayerPaddleSpeed())));
+        }
+
     }
 
     public bool IsLeftPaddledown()

@@ -12,13 +12,13 @@ public class OptionsPanel : MonoBehaviour
     // player pref UI Fields
     public Slider musicVolSlider;
     public Slider sfxVolSlider;
-    public Slider paddleSpeedSlider;
     public Toggle useAIToggle;
-    public GoogleAnalyticsV3 googleAnalytics;
+    public GameAnalytics gameAnalytics;
     
 
     void Awake()
     {
+        
         if (optionsPanel == null)
         {
             DontDestroyOnLoad(gameObject);
@@ -48,7 +48,6 @@ public class OptionsPanel : MonoBehaviour
         {
             musicVolSlider.value = gameData.GetMusicVolume();
             sfxVolSlider.value = gameData.GetSFXVolume();
-            paddleSpeedSlider.value = gameData.GetPlayerPaddleSpeed();
             useAIToggle.isOn = gameData.GetAIEnabled();
         }
     }
@@ -57,24 +56,20 @@ public class OptionsPanel : MonoBehaviour
     {
         gameData.SetMusicVolume(musicVolSlider.value);
         gameData.SetSFXVolume(sfxVolSlider.value);
-        gameData.SetPlayerPaddleSpeed(paddleSpeedSlider.value);
         gameData.SetAIEnabled(useAIToggle.isOn);
         PopulateDefaultValues();
-        gameData.googleAnalytics.LogEvent(new EventHitBuilder()
-            .SetEventCategory("UIEvent")
-            .SetEventAction("updateOptions")
-            .SetEventLabel("Update Options"));
+        ShowOptionsPanel(false);
     }
 
     public void ShowOptionsPanel(bool showPanel)
     {
         if (showPanel)
         {
-            googleAnalytics.LogScreen("Options Panel - Show");
+            gameAnalytics.LogScreen("Options Panel - Show");
         }
         else
         {
-            googleAnalytics.LogScreen("Options Panel - Hide");
+            gameAnalytics.LogScreen("Options Panel - Hide");
         }
         
         gameObject.SetActive(showPanel);

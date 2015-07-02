@@ -53,23 +53,26 @@ public class Brick : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        int maxHits = hitSprites.Length + 1;
-        float sfxVolume = gameData.GetSFXVolume();
-        if (isBreakable)
+        if (collision.collider.name == "Ball")
         {
-            timesHit++;
-            showBreakParticles();
-        }
-        if (isBreakable && maxHits > 0 && timesHit >= maxHits)
-        {
-            DestroyBrick();
-            gameData.AddPlayerScore(scoreValue);
-            AudioSource.PlayClipAtPoint(breakSound, this.transform.position, sfxVolume);
-        }
-        else
-        {
-            LoadSprites();
-            AudioSource.PlayClipAtPoint(hitSound, this.transform.position, sfxVolume);
+            int maxHits = hitSprites.Length + 1;
+            float sfxVolume = gameData.GetSFXVolume();
+            if (isBreakable)
+            {
+                timesHit++;
+                showBreakParticles();
+            }
+            if (isBreakable && maxHits > 0 && timesHit >= maxHits)
+            {
+                DestroyBrick();
+                gameData.AddPlayerScore(scoreValue);
+                AudioSource.PlayClipAtPoint(breakSound, this.transform.position, sfxVolume);
+            }
+            else
+            {
+                LoadSprites();
+                AudioSource.PlayClipAtPoint(hitSound, this.transform.position, sfxVolume);
+            }
         }
 
     }
