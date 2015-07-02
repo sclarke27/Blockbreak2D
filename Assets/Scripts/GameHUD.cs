@@ -5,7 +5,7 @@ using System.Collections;
 public class GameHUD : MonoBehaviour
 {
 
-    public GoogleAnalyticsV3 googleAnalytics;
+    public GameAnalytics gameAnalytics;
     public string scoreText = "Score: ";
     public Text scoreTextField;
     public string livesText = "Lives: ";
@@ -53,7 +53,7 @@ public class GameHUD : MonoBehaviour
         {
             mobileOverlayPanel.SetActive(true);
         }
-        else
+        else if(!isMenuScreen)
         {
             mobileOverlayPanel.SetActive(false);
         }
@@ -73,19 +73,19 @@ public class GameHUD : MonoBehaviour
             readyPanel.SetActive(false);
             instructionsPanel.SetActive(false);
             ball = GameObject.FindObjectOfType<Ball>();
-            googleAnalytics.LogScreen("Game Screen");
+            gameAnalytics.LogScreen(Application.loadedLevelName + "Game Screen");
 
         }
         else {
             if (isStartMenu)
             {
-                googleAnalytics.LogScreen("Start Screen");
+                gameAnalytics.LogScreen("Start Screen");
                 SetupHighScoresPanel();
                 difficultySlider.value = gameData.GetDifficultyLevel();
             }
             if (isEndScreen)
             {
-                googleAnalytics.LogScreen("End Screen");
+                gameAnalytics.LogScreen("End Screen");
                 SetupHighScoresPanel();
                 scoreTextField.text = gameData.GetPlayerScore().ToString();
                 //if player got high score, show name dialog instead of loading next level
@@ -195,11 +195,10 @@ public class GameHUD : MonoBehaviour
         {
             SetupHighScoresPanel();
         }
-        googleAnalytics.LogEvent(new EventHitBuilder()
-            .SetEventCategory("GameplayEvent")
-            .SetEventAction("newHighScore")
-            .SetEventLabel("New High Score")
-            .SetEventValue(System.Convert.ToInt64(gameData.GetPlayerScore())));
+        if (gameAnalytics != null)
+        {
+            gameAnalytics.LogEvent(GameAnalytics.gaEventCategories.GameEvent, "newHighScore", "New High Score", System.Convert.ToInt64(gameData.GetPlayerScore()));
+        }
     }
 
     public void CancelPlayerHighScore()

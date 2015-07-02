@@ -6,6 +6,7 @@ public class LoseCollider : MonoBehaviour
 
     private LevelManager levelManager;
     private GameData gameData;
+    public AudioSource powerupDestructionSound;
 
     // Use this for initialization
     void Start()
@@ -22,14 +23,25 @@ public class LoseCollider : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        gameData.LoseOneLife();
-        if (gameData.GetPlayerRemainingLives() <= 0)
+        if (collision.name == "Ball")
         {
-            levelManager.LoadLevel("StopScreen");
+            gameData.LoseOneLife();
+            if (gameData.GetPlayerRemainingLives() <= 0)
+            {
+                levelManager.LoadLevel("StopScreen");
+            }
+            else
+            {
+                levelManager.ResetPlayer();
+            }
         }
         else
         {
-            levelManager.ResetPlayer();
+            if (powerupDestructionSound != null)
+            {
+                powerupDestructionSound.Play();
+            }
+            Destroy(collision.gameObject);
         }
 
     }
