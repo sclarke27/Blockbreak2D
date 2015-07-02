@@ -5,7 +5,7 @@ public class GameAnalytics : MonoBehaviour
 {
 
     public GoogleAnalyticsV3 googleAnalytics;
-    public bool isAnalyticsEnabled;
+    public bool isAnalyticsEnabled = true;
 
     public enum gaEventCategories
     {
