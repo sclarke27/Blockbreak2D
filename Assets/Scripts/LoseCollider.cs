@@ -39,6 +39,7 @@ public class LoseCollider : MonoBehaviour
         {
             if (powerupDestructionSound != null)
             {
+                powerupDestructionSound.volume = gameData.GetSFXVolume();
                 powerupDestructionSound.Play();
             }
             Destroy(collision.gameObject);

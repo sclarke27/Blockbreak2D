@@ -284,6 +284,7 @@ public class GameData : MonoBehaviour {
 
     public void GainOneLife()
     {
+        collect1UpSound.volume = GetSFXVolume();
         collect1UpSound.Play();
         SetPlayerRemainingLives(playerLives + 1);
         if (gameAnalytics != null)

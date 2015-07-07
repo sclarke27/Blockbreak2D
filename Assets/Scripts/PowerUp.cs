@@ -12,7 +12,7 @@ public class PowerUp : MonoBehaviour
     };
 
     public powerupTypes powerUpType;
-    public AudioSource bounceSound;
+    public AudioClip bounceSound;
 
     private GameData gameData;
 
@@ -45,7 +45,9 @@ public class PowerUp : MonoBehaviour
         {
             if (bounceSound != null)
             {
-                bounceSound.Play();
+                float sfxVolume = gameData.GetSFXVolume();
+                AudioSource.PlayClipAtPoint(bounceSound, this.transform.position, sfxVolume);
+                
             }
         }
     }
