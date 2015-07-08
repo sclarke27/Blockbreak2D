@@ -26,8 +26,6 @@ public class Ball : MonoBehaviour
         paddleToBallVector = this.transform.position - paddle.transform.position;
         veloHistoryX.Capacity = 5;
         veloHistoryY.Capacity = 5;
-
-        //Debug.Log(optionsPanel.GetUserPreference("sfxVolume"));
     }
 
     public void LockBall()

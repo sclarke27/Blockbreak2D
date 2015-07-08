@@ -37,9 +37,9 @@ public class GameHUD : MonoBehaviour
 
     private GameData gameData;
     //private LevelManager levelManager;
-    private bool playerReady = false;
+    //private bool playerReady = false;
     private string nextLevel;
-    private bool hasSeenInstructions = false;
+    //private bool hasSeenInstructions = false;
     private Ball ball;
 
     
@@ -170,7 +170,10 @@ public class GameHUD : MonoBehaviour
         }
         if (showDialog)
         {
-            Screen.showCursor = true;
+            if (Application.platform != RuntimePlatform.Android && Application.platform != RuntimePlatform.IPhonePlayer)
+            {
+                Screen.showCursor = true;
+            }
         }
         else
         {
@@ -183,7 +186,10 @@ public class GameHUD : MonoBehaviour
     {
         if (playerNameInput.text != "")
         {
-            Screen.showCursor = true;
+            if (Application.platform != RuntimePlatform.Android && Application.platform != RuntimePlatform.IPhonePlayer)
+            {
+                Screen.showCursor = true;
+            }
             gameData.SavePlayerScore(playerNameInput.text);
             ToggleHighScoreNameDialog(false, "");
             if (nextLevel != "" && nextLevel != null)
@@ -210,25 +216,12 @@ public class GameHUD : MonoBehaviour
         }
     }
 
-    public void SetPlayerReady(bool isReady)
-    {
-        playerReady = isReady;
-        if (playerReady)
-        {
-            Screen.showCursor = false;
-        }
-    }
-
-    public bool IsPlayerReady()
-    {
-        return playerReady;
-    }
-
     public void HandlePlayerReady()
     {
         Screen.showCursor = false;
-        hasSeenInstructions = true;
-        SetPlayerReady(true);
+        //hasSeenInstructions = true;
+        gameData.SetInstructionsViewed();
+        gameData.SetPlayerReady(true);
         ball.LaunchBall();
     }
 
@@ -259,7 +252,7 @@ public class GameHUD : MonoBehaviour
                 gameData.SetPaddle("right", false);
             }
 
-            if (!IsPlayerReady())
+            if (!gameData.IsPlayerReady())
             {
 
                 //wait for player to hit space bar
@@ -269,7 +262,7 @@ public class GameHUD : MonoBehaviour
                 }
 
                 //if player has not seen the instructions, show them else show ready panel
-                if (isFirstLevel && !hasSeenInstructions)
+                if (isFirstLevel && !gameData.HasSeenInstructions())
                 {
                     instructionsPanel.SetActive(true);
                     readyPanel.SetActive(false);
@@ -290,7 +283,10 @@ public class GameHUD : MonoBehaviour
                     gameData.PauseGame(!gameData.IsGamePaused());
                     if (gameData.IsGamePaused())
                     {
-                        Screen.showCursor = true;
+                        if (Application.platform != RuntimePlatform.Android && Application.platform != RuntimePlatform.IPhonePlayer)
+                        {
+                            Screen.showCursor = true;
+                        }
                     }
                     else
                     {
@@ -323,7 +319,10 @@ public class GameHUD : MonoBehaviour
         else
         {
             //we are in a menu screen
-            Screen.showCursor = true;
+            if (Application.platform != RuntimePlatform.Android && Application.platform != RuntimePlatform.IPhonePlayer)
+            {
+                Screen.showCursor = true;
+            }
         }
     }
 
@@ -334,7 +333,10 @@ public class GameHUD : MonoBehaviour
 
     public void ShowLevelComplete()
     {
-        Screen.showCursor = true;
+        if (Application.platform != RuntimePlatform.Android && Application.platform != RuntimePlatform.IPhonePlayer)
+        {
+            Screen.showCursor = true;
+        }
         levelCompletePanel.SetActive(true);
     }
 }

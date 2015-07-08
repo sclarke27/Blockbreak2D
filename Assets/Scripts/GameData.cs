@@ -26,9 +26,12 @@ public class GameData : MonoBehaviour {
     private float currSFXVolume;
     private int totalHighScores = 25;
     private ArrayList highScoreList = new ArrayList();
+    private bool playerInstructionsViewed = false;
+    private bool playerReady = false;
 
     private bool leftPaddledown = false;
     private bool rightPaddledown = false;
+
 
     public enum playerPrefTypes
     {
@@ -67,6 +70,26 @@ public class GameData : MonoBehaviour {
     void Update()
     {
         
+    }
+
+    public bool IsPlayerReady()
+    {
+        return playerReady;
+    }
+
+    public void SetPlayerReady(bool isReady)
+    {
+        playerReady = isReady;
+    }
+
+    public bool HasSeenInstructions()
+    {
+        return playerInstructionsViewed;
+    }
+
+    public void SetInstructionsViewed()
+    {
+        playerInstructionsViewed = true;
     }
 
     public void ResetPlayerScore()
