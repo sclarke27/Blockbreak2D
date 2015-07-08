@@ -7,10 +7,10 @@ public class Paddle : MonoBehaviour
     
     public float paddleScreenOffset = 0.5f;
 
-    private float maxPaddleVelocity = 20.0f;
+    private float maxPaddleVelocity = 27.0f;
     private float paddleVelocity = 0f;
-    private float acclerationAmount = 0.04f;
-    private float declerationAmount = 0.07f;
+    private float acclerationAmount = 0.127f;
+    private float declerationAmount = 0.127f;
     private float currAccleration = 0f;
     private float currStep = 0;
 

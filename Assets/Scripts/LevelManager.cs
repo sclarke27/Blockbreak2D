@@ -96,7 +96,7 @@ public class LevelManager : MonoBehaviour
         //gameData.PauseGame(false);
         gameData.SetPaddle("right", false);
         gameData.SetPaddle("left", false);
-        gameHUD.SetPlayerReady(false);
+        gameData.SetPlayerReady(false);
         playerBall.ShowBallDestruction();
         playerBall.LockBall();
     }
@@ -130,11 +130,14 @@ public class LevelManager : MonoBehaviour
 
     public void ShowLevelComplete()
     {
+        gameData.SetPaddle("right", false);
+        gameData.SetPaddle("left", false);
         musicPlayer.SetInMenu(true);
         playerBall.ShowBallDestruction();
         playerBall.LockBall();
         gameData.PauseGame(true);
         gameHUD.ShowLevelComplete();
+        gameData.SetPlayerReady(false);
         gameData.GainOneLife();
         if (gameAnalytics != null)
         {
