@@ -67,6 +67,7 @@ public class LevelManager : MonoBehaviour
         gameData.ResetPlayerLives();
         gameData.ResetPlayerScore();
         musicPlayer.SetInMenu(false);
+        gameData.SetPlayerReady(false);
         Brick.breakableCount = 0;
         Application.LoadLevel(1);
     }
@@ -80,6 +81,7 @@ public class LevelManager : MonoBehaviour
         }
         gameData.SetPaddle("right", false);
         gameData.SetPaddle("left", false);
+        gameData.SetPlayerReady(false);
 
         gameData.PauseGame(false);
         Brick.breakableCount = 0;
@@ -105,6 +107,7 @@ public class LevelManager : MonoBehaviour
     {
         musicPlayer.SetInMenu(false);
         gameData.PauseGame(false);
+        gameData.SetPlayerReady(false);
         Brick.breakableCount = 0;
         if (gameAnalytics != null)
         {
@@ -115,6 +118,7 @@ public class LevelManager : MonoBehaviour
 
     public void MainMenu()
     {
+        gameData.SetPlayerReady(false);
         musicPlayer.SetInMenu(true);
         LoadLevel("StartScreen");
     }
