@@ -2,19 +2,18 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class OptionsPanel : MonoBehaviour
+public class OptionsPanel : PanelBaseClass
 {
 
     public static OptionsPanel optionsPanel;
-
-    private GameData gameData;
 
     // player pref UI Fields
     public Slider musicVolSlider;
     public Slider sfxVolSlider;
     public Toggle useAIToggle;
+    public Toggle useGAToggle;
     public GameAnalytics gameAnalytics;
-    
+    private bool panelActive = false;
 
     void Awake()
     {
@@ -30,16 +29,16 @@ public class OptionsPanel : MonoBehaviour
         }
     }
 
-    void Start()
+    new void Start()
     {
-        gameData = GameObject.FindObjectOfType<GameData>();
+        base.Start();
         PopulateDefaultValues();
     }
 
 
-    void Update()
+    new void Update()
     {
-        
+        base.Update();
     }
 
     void PopulateDefaultValues()
@@ -49,6 +48,7 @@ public class OptionsPanel : MonoBehaviour
             musicVolSlider.value = gameData.GetMusicVolume();
             sfxVolSlider.value = gameData.GetSFXVolume();
             useAIToggle.isOn = gameData.GetAIEnabled();
+            useGAToggle.isOn = gameData.GetGAEnabled();
         }
     }
 
@@ -57,13 +57,15 @@ public class OptionsPanel : MonoBehaviour
         gameData.SetMusicVolume(musicVolSlider.value);
         gameData.SetSFXVolume(sfxVolSlider.value);
         gameData.SetAIEnabled(useAIToggle.isOn);
+        gameData.SetGAEnabled(useGAToggle.isOn);
         PopulateDefaultValues();
         ShowOptionsPanel(false);
     }
 
     public void ShowOptionsPanel(bool showPanel)
     {
-        if (showPanel)
+        panelActive = showPanel;
+        if (panelActive)
         {
             gameAnalytics.LogScreen("Options Panel - Show");
         }
@@ -71,9 +73,8 @@ public class OptionsPanel : MonoBehaviour
         {
             gameAnalytics.LogScreen("Options Panel - Hide");
         }
-        
-        gameObject.SetActive(showPanel);
         PopulateDefaultValues();
+        gameObject.SetActive(panelActive);
     }
 
 
