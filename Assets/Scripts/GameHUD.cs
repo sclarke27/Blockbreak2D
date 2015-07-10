@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class GameHUD : MonoBehaviour
+public class GameHUD : PanelBaseClass
 {
 
     public GameAnalytics gameAnalytics;
@@ -35,20 +35,13 @@ public class GameHUD : MonoBehaviour
     public Button paddleLeftUIButton;
     public Button paddleRightUIButton;
 
-    private GameData gameData;
-    //private LevelManager levelManager;
-    //private bool playerReady = false;
     private string nextLevel;
-    //private bool hasSeenInstructions = false;
     private Ball ball;
 
-    
+    private OptionsPanel optionsPanel;
 
     void Awake()
     {
-        gameData = GameObject.FindObjectOfType<GameData>();
-        //levelManager = GameObject.FindObjectOfType<LevelManager>();
-
         if (!isMenuScreen && (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer))
         {
             mobileOverlayPanel.SetActive(true);
@@ -61,8 +54,9 @@ public class GameHUD : MonoBehaviour
     }
 
     // Use this for initialization
-    void Start()
+    new void Start()
     {
+        base.Start();
         if (!isMenuScreen)
         {
             scoreTextField.text = "";
@@ -98,6 +92,7 @@ public class GameHUD : MonoBehaviour
 
             }
         }
+        optionsPanel = GameObject.FindObjectOfType<OptionsPanel>();
         
     }
 
@@ -226,8 +221,9 @@ public class GameHUD : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    new void Update()
     {
+        base.Update();
         if (!isMenuScreen)
         {
             //populate HUD with default values
@@ -277,38 +273,46 @@ public class GameHUD : MonoBehaviour
             }
             else
             {
+                optionsPanel = GameObject.FindObjectOfType<OptionsPanel>();
                 //listen for pause keys
-                if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKey(KeyCode.Menu))
+                if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)/* || Input.GetKey(KeyCode.Menu)*/)
                 {
-                    gameData.PauseGame(!gameData.IsGamePaused());
-                    if (gameData.IsGamePaused())
+
+                    if (optionsPanel == null)
                     {
-                        if (Application.platform != RuntimePlatform.Android && Application.platform != RuntimePlatform.IPhonePlayer)
+                        gameData.PauseGame(!gameData.IsGamePaused());
+                        if (gameData.IsGamePaused())
                         {
-                            Screen.showCursor = true;
+                            if (Application.platform != RuntimePlatform.Android && Application.platform != RuntimePlatform.IPhonePlayer)
+                            {
+                                Screen.showCursor = true;
+                            }
                         }
-                    }
-                    else
-                    {
-                        Screen.showCursor = false;
+                        else
+                        {
+                            Screen.showCursor = false;
+                        }
                     }
                 }
 
 
 
                 //if game is paused, show the paused panel else dont
-                if (gameData.IsGamePaused())
+                if (optionsPanel == null)
                 {
-                    pausePanel.SetActive(true);
-                    pausedTextField.text = pausedText;
-                    pausedTextFieldShadow.text = pausedText;
-                }
-                else
-                {
-                    pausePanel.SetActive(false);
-                    pausedTextField.text = "";
-                    pausedTextFieldShadow.text = "";
- 
+                    if (gameData.IsGamePaused())
+                    {
+                        pausePanel.SetActive(true);
+                        pausedTextField.text = pausedText;
+                        pausedTextFieldShadow.text = pausedText;
+                    }
+                    else
+                    {
+                        pausePanel.SetActive(false);
+                        pausedTextField.text = "";
+                        pausedTextFieldShadow.text = "";
+
+                    }
                 }
 
                 //hide other panels
@@ -324,6 +328,12 @@ public class GameHUD : MonoBehaviour
                 Screen.showCursor = true;
             }
         }
+
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            Screen.showCursor = false;
+        }
+
     }
 
     public void HandleDiffcultySlider()

@@ -2,13 +2,13 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class ReadyPanel : MonoBehaviour
+public class ReadyPanel : PanelBaseClass
 {
 
     public Text tapToStartText;
 
     // Use this for initialization
-    void Start()
+    new void Start()
     {
         if ((Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer) && tapToStartText != null)
         {
@@ -16,9 +16,4 @@ public class ReadyPanel : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

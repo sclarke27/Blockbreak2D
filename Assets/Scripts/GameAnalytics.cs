@@ -38,6 +38,11 @@ public class GameAnalytics : MonoBehaviour
 
     }
 
+    public bool IsAnalyticsEnabled()
+    {
+        return isAnalyticsEnabled;
+    }
+
     public void EnableAnalytics(bool enable)
     {
         isAnalyticsEnabled = enable;

@@ -46,6 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\LevelCompletePanel.cs" />
+     <Compile Include="Assets\PausePanel.cs" />
      <Compile Include="Assets\Scripts\Ball.cs" />
      <Compile Include="Assets\Scripts\Brick.cs" />
      <Compile Include="Assets\Scripts\GameAnalytics.cs" />
@@ -57,6 +59,7 @@
      <Compile Include="Assets\Scripts\MusicPlayer.cs" />
      <Compile Include="Assets\Scripts\OptionsPanel.cs" />
      <Compile Include="Assets\Scripts\Paddle.cs" />
+     <Compile Include="Assets\Scripts\PanelBaseClass.cs" />
      <Compile Include="Assets\Scripts\PowerUp.cs" />
      <Compile Include="Assets\Scripts\ReadyPanel.cs" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />

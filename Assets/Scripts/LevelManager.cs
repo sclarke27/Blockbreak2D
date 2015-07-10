@@ -43,7 +43,11 @@ public class LevelManager : MonoBehaviour
         else
         {
             musicPlayer.SetInMenu(true);
-            Screen.showCursor = true;
+            //we are in a menu screen
+            if (Application.platform != RuntimePlatform.Android && Application.platform != RuntimePlatform.IPhonePlayer)
+            {
+                Screen.showCursor = true;
+            }
             if (levelName == "LoseScreen")
             {
                 //if player got high score, show name dialog instead of loading next level
@@ -118,9 +122,9 @@ public class LevelManager : MonoBehaviour
 
     public void MainMenu()
     {
+        LoadLevel("StartScreen");
         gameData.SetPlayerReady(false);
         musicPlayer.SetInMenu(true);
-        LoadLevel("StartScreen");
     }
 
     public void QuitRequest()

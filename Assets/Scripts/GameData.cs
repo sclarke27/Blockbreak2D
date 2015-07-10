@@ -17,6 +17,7 @@ public class GameData : MonoBehaviour {
 
     private float ballStartingVelocity = 7.0f;
     private bool useAI = false;
+    private bool useGA = true;
     private float difficultyLevel = 2f;
     private int playerScore = 0;
     private int playerLives = 0;
@@ -39,7 +40,8 @@ public class GameData : MonoBehaviour {
         sfxVolume,
         useAI,
         difficultyLevel,
-        paddleSpeed
+        paddleSpeed,
+        useGA
     };
 
     void Awake()
@@ -51,6 +53,7 @@ public class GameData : MonoBehaviour {
             SetMusicVolume(PlayerPrefs.GetFloat(playerPrefTypes.musicVolume.ToString(), defaultMusicVolume));
             SetSFXVolume(PlayerPrefs.GetFloat(playerPrefTypes.sfxVolume.ToString(), defaultSFXVolume));
             SetAIEnabled( (PlayerPrefs.GetFloat(playerPrefTypes.useAI.ToString(), (!useAI) ? 0 : 1) == 0) ? false : true);
+            SetGAEnabled((PlayerPrefs.GetFloat(playerPrefTypes.useGA.ToString(), (!useGA) ? 0 : 1) == 0) ? false : true);
             SetDifficulty(PlayerPrefs.GetFloat(playerPrefTypes.difficultyLevel.ToString(), defaultDifficultyLevel));
             SetPlayerPaddleSpeed(PlayerPrefs.GetFloat(playerPrefTypes.paddleSpeed.ToString(), defaultPaddleSpeed));
             LoadHighScores();
@@ -71,6 +74,7 @@ public class GameData : MonoBehaviour {
     {
         
     }
+
 
     public bool IsPlayerReady()
     {
@@ -221,6 +225,23 @@ public class GameData : MonoBehaviour {
         if (gameAnalytics != null)
         {
             gameAnalytics.LogEvent(GameAnalytics.gaEventCategories.UIEvent, "aiEnabled", "AI Paddle Toggled", ((useAI) ? 1 : 0));
+        }
+
+    }
+
+    public bool GetGAEnabled()
+    {
+        return gameAnalytics.IsAnalyticsEnabled();
+    }
+
+    public void SetGAEnabled(bool enableGA)
+    {
+        PlayerPrefs.SetFloat(playerPrefTypes.useGA.ToString(), (enableGA) ? 1 : 0);
+        gameAnalytics.EnableAnalytics(enableGA);
+
+        if (gameAnalytics != null)
+        {
+            gameAnalytics.LogEvent(GameAnalytics.gaEventCategories.UIEvent, "gaEnabled", "Google Analytics Toggled", ((useAI) ? 1 : 0));
         }
 
     }
