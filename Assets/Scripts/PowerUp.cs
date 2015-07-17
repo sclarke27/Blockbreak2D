@@ -45,8 +45,8 @@ public class PowerUp : MonoBehaviour
         {
             if (bounceSound != null)
             {
-                float sfxVolume = gameData.GetSFXVolume();
-                AudioSource.PlayClipAtPoint(bounceSound, this.transform.position, sfxVolume);
+                //float sfxVolume = gameData.GetSFXVolume();
+                //AudioSource.PlayClipAtPoint(bounceSound, this.transform.position, sfxVolume);
                 
             }
         }
