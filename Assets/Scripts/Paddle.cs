@@ -144,7 +144,7 @@ public class Paddle : MonoBehaviour
 
         //set paddle velocity
         paddleVelocity = newVelocityX;
-        this.rigidbody2D.velocity = new Vector2(paddleVelocity, 0.0f);
+        this.GetComponent<Rigidbody2D>().velocity = new Vector2(paddleVelocity, 0.0f);
         
     }
 
@@ -155,7 +155,7 @@ public class Paddle : MonoBehaviour
         switch (collision.collider.name)
         {
             case "Ball":
-                ball.AddSpin(this.rigidbody2D.velocity.x);
+                ball.AddSpin(this.GetComponent<Rigidbody2D>().velocity.x);
                 break;
 
             

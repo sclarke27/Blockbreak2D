@@ -5,7 +5,7 @@ public class GameAnalytics : MonoBehaviour
 {
 
     public GoogleAnalyticsV3 googleAnalytics;
-    public bool isAnalyticsEnabled = true;
+    public bool isAnalyticsEnabled = false;
 
     public enum gaEventCategories
     {
@@ -15,7 +15,7 @@ public class GameAnalytics : MonoBehaviour
 
     void Awake()
     {
-        EnableAnalytics(true);
+        //EnableAnalytics(true);
     }
 
     // Use this for initialization
@@ -58,7 +58,7 @@ public class GameAnalytics : MonoBehaviour
 
     public void LogEvent(gaEventCategories eventType, string actionTaken, string label, long eventValue)
     {
-        if (isAnalyticsEnabled == true && googleAnalytics != null)
+        if (isAnalyticsEnabled && googleAnalytics != null)
         {
             googleAnalytics.LogEvent(new EventHitBuilder()
                 .SetEventCategory(eventType.ToString())

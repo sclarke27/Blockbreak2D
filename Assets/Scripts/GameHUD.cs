@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameHUD : PanelBaseClass
 {
@@ -67,7 +68,7 @@ public class GameHUD : PanelBaseClass
             readyPanel.SetActive(false);
             instructionsPanel.SetActive(false);
             ball = GameObject.FindObjectOfType<Ball>();
-            gameAnalytics.LogScreen(Application.loadedLevelName + "Game Screen");
+            gameAnalytics.LogScreen(SceneManager.GetActiveScene().name + "Game Screen");
 
         }
         else {
@@ -167,12 +168,12 @@ public class GameHUD : PanelBaseClass
         {
             if (Application.platform != RuntimePlatform.Android && Application.platform != RuntimePlatform.IPhonePlayer)
             {
-                Screen.showCursor = true;
+                Cursor.visible = true;
             }
         }
         else
         {
-            Screen.showCursor = false;
+            Cursor.visible = false;
         }
         nameInputPanel.SetActive(showDialog);
     }
@@ -183,13 +184,13 @@ public class GameHUD : PanelBaseClass
         {
             if (Application.platform != RuntimePlatform.Android && Application.platform != RuntimePlatform.IPhonePlayer)
             {
-                Screen.showCursor = true;
+                Cursor.visible = true;
             }
             gameData.SavePlayerScore(playerNameInput.text);
             ToggleHighScoreNameDialog(false, "");
             if (nextLevel != "" && nextLevel != null)
             {
-                Application.LoadLevel(nextLevel);
+                SceneManager.LoadScene(nextLevel);
             }
         }
         if (isEndScreen)
@@ -207,13 +208,13 @@ public class GameHUD : PanelBaseClass
         ToggleHighScoreNameDialog(false, "");
         if (!isEndScreen)
         {
-            Application.LoadLevel(nextLevel);
+            SceneManager.LoadScene(nextLevel);
         }
     }
 
     public void HandlePlayerReady()
     {
-        Screen.showCursor = false;
+        Cursor.visible = false;
         //hasSeenInstructions = true;
         gameData.SetInstructionsViewed();
         gameData.SetPlayerReady(true);
@@ -285,12 +286,12 @@ public class GameHUD : PanelBaseClass
                         {
                             if (Application.platform != RuntimePlatform.Android && Application.platform != RuntimePlatform.IPhonePlayer)
                             {
-                                Screen.showCursor = true;
+                                Cursor.visible = true;
                             }
                         }
                         else
                         {
-                            Screen.showCursor = false;
+                            Cursor.visible = false;
                         }
                     }
                 }
@@ -325,13 +326,13 @@ public class GameHUD : PanelBaseClass
             //we are in a menu screen
             if (Application.platform != RuntimePlatform.Android && Application.platform != RuntimePlatform.IPhonePlayer)
             {
-                Screen.showCursor = true;
+                Cursor.visible = true;
             }
         }
 
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
-            Screen.showCursor = false;
+            Cursor.visible = false;
         }
 
     }
@@ -345,7 +346,7 @@ public class GameHUD : PanelBaseClass
     {
         if (Application.platform != RuntimePlatform.Android && Application.platform != RuntimePlatform.IPhonePlayer)
         {
-            Screen.showCursor = true;
+            Cursor.visible = true;
         }
         levelCompletePanel.SetActive(true);
     }
