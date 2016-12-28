@@ -42,7 +42,7 @@ public class Ball : MonoBehaviour
         }
         ParticleSystem breakParticles = Instantiate(ballBreakParticles, this.transform.position, Quaternion.identity) as ParticleSystem;
         breakParticles.Play();
-        Destroy(breakParticles, breakParticles.main.duration);
+        Destroy(breakParticles.gameObject, breakParticles.main.duration);
 
 
     }

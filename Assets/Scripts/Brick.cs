@@ -82,7 +82,7 @@ public class Brick : MonoBehaviour
 
         ParticleSystem smoke = Instantiate(breakParticles, transform.position, Quaternion.identity) as ParticleSystem;
         smoke.Play();
-        Destroy(smoke, smoke.main.duration);
+        Destroy(smoke.gameObject, smoke.main.duration);
 
     }
 
