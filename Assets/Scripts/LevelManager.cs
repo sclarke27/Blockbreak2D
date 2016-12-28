@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -38,7 +38,7 @@ public class LevelManager : MonoBehaviour
         if (levelName.IndexOf("Level") >= 0)
         {
             musicPlayer.SetInMenu(false);
-            Screen.showCursor = false;
+            Cursor.visible = false;
         }
         else
         {
@@ -46,7 +46,7 @@ public class LevelManager : MonoBehaviour
             //we are in a menu screen
             if (Application.platform != RuntimePlatform.Android && Application.platform != RuntimePlatform.IPhonePlayer)
             {
-                Screen.showCursor = true;
+                Cursor.visible = true;
             }
             if (levelName == "LoseScreen")
             {
@@ -61,19 +61,19 @@ public class LevelManager : MonoBehaviour
             }
         }
         gameAnalytics.LogScreen(levelName);
-        Application.LoadLevel(levelName);
+        SceneManager.LoadScene(levelName);
     }
 
     public void StartGame()
     {
-        Screen.showCursor = false;
+        Cursor.visible = false;
         gameData.PauseGame(false);
         gameData.ResetPlayerLives();
         gameData.ResetPlayerScore();
         musicPlayer.SetInMenu(false);
         gameData.SetPlayerReady(false);
         Brick.breakableCount = 0;
-        Application.LoadLevel(1);
+        SceneManager.LoadScene(1);
     }
 
     public void RestartLevel()
@@ -94,7 +94,7 @@ public class LevelManager : MonoBehaviour
             gameAnalytics.LogEvent(GameAnalytics.gaEventCategories.GameEvent, "restartLevel", "Restart Level");
         }
 
-        Application.LoadLevel(Application.loadedLevel);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void ResetPlayer()
@@ -117,7 +117,7 @@ public class LevelManager : MonoBehaviour
         {
             gameAnalytics.LogEvent(GameAnalytics.gaEventCategories.GameEvent, "nextLevel", "Load Next Leve");
         }
-        Application.LoadLevel(Application.loadedLevel + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void MainMenu()
@@ -149,7 +149,7 @@ public class LevelManager : MonoBehaviour
         gameData.GainOneLife();
         if (gameAnalytics != null)
         {
-            gameAnalytics.LogEvent(GameAnalytics.gaEventCategories.GameEvent, "levelComplete", Application.loadedLevelName + " Complete", gameData.GetPlayerScore());
+            gameAnalytics.LogEvent(GameAnalytics.gaEventCategories.GameEvent, "levelComplete", SceneManager.GetActiveScene().name + " Complete", gameData.GetPlayerScore());
             gameAnalytics.LogScreen("Level Complete");
         }
     }

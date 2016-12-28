@@ -6,7 +6,7 @@ public class Brick : MonoBehaviour
 
     public AudioClip breakSound;
     public AudioClip hitSound;
-    public GameObject breakParticles;
+    public ParticleSystem breakParticles;
     public int scoreValue;
     public Sprite[] hitSprites;
     public bool isBonusBrick = false;
@@ -23,7 +23,7 @@ public class Brick : MonoBehaviour
         levelManager = GameObject.FindObjectOfType<LevelManager>();
         gameData = GameObject.FindObjectOfType<GameData>();
 
-        isBreakable = (this.tag == "Breakable");
+        isBreakable = (tag == "Breakable");
         if (isBreakable && !isBonusBrick)
         {
             breakableCount++;
@@ -66,12 +66,12 @@ public class Brick : MonoBehaviour
             {
                 DestroyBrick();
                 gameData.AddPlayerScore(scoreValue);
-                AudioSource.PlayClipAtPoint(breakSound, this.transform.position, sfxVolume);
+                AudioSource.PlayClipAtPoint(breakSound, transform.position, sfxVolume);
             }
             else
             {
                 LoadSprites();
-                AudioSource.PlayClipAtPoint(hitSound, this.transform.position, sfxVolume);
+                AudioSource.PlayClipAtPoint(hitSound, transform.position, sfxVolume);
             }
         }
 
@@ -80,8 +80,9 @@ public class Brick : MonoBehaviour
     void showBreakParticles()
     {
 
-        ParticleEmitter smoke = Instantiate(breakParticles, this.transform.position, Quaternion.identity) as ParticleEmitter;
-        Destroy(smoke);
+        ParticleSystem smoke = Instantiate(breakParticles, transform.position, Quaternion.identity) as ParticleSystem;
+        smoke.Play();
+        Destroy(smoke, smoke.main.duration);
 
     }
 
@@ -92,11 +93,11 @@ public class Brick : MonoBehaviour
         {
             if (hitSprites[spriteIndex] != null)
             {
-                this.GetComponent<SpriteRenderer>().sprite = hitSprites[spriteIndex];
+                GetComponent<SpriteRenderer>().sprite = hitSprites[spriteIndex];
             }
             else
             {
-                Debug.LogError("[ERROR]: '" + this.name + "' block is missing sprite. index[" + spriteIndex + "]");
+                Debug.LogError("[ERROR]: '" + name + "' block is missing sprite. index[" + spriteIndex + "]");
             }
         }
     }

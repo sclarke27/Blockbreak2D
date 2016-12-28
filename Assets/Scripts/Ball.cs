@@ -9,7 +9,7 @@ public class Ball : MonoBehaviour
     private bool isLocked = true;
     private GameData gameData;
     public AudioSource ballDestructionSound;
-    public GameObject ballBreakParticles;
+    public ParticleSystem ballBreakParticles;
 
 
     private float minSpeed = 4f;
@@ -40,8 +40,9 @@ public class Ball : MonoBehaviour
             ballDestructionSound.volume = gameData.GetSFXVolume();
             ballDestructionSound.Play();
         }
-        ParticleEmitter breakParticles = Instantiate(ballBreakParticles, this.transform.position, Quaternion.identity) as ParticleEmitter;
-        Destroy(breakParticles);
+        ParticleSystem breakParticles = Instantiate(ballBreakParticles, this.transform.position, Quaternion.identity) as ParticleSystem;
+        breakParticles.Play();
+        Destroy(breakParticles, breakParticles.main.duration);
 
 
     }
@@ -52,7 +53,7 @@ public class Ball : MonoBehaviour
         {
             this.transform.position = paddle.transform.position + paddleToBallVector;
             isLocked = false;
-            this.rigidbody2D.velocity = new Vector2(0f, (gameData.GetPlayerBallStartSpeed() + gameData.GetDifficultyLevel()));
+            this.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, (gameData.GetPlayerBallStartSpeed() + gameData.GetDifficultyLevel()));
         }
     }
 
@@ -61,7 +62,7 @@ public class Ball : MonoBehaviour
         if (!isLocked)
         {
             //Debug.Log("Spin:" + spinAmount);
-            this.rigidbody2D.AddTorque(spinAmount);
+            this.GetComponent<Rigidbody2D>().AddTorque(spinAmount);
         }
     }
 
@@ -70,8 +71,8 @@ public class Ball : MonoBehaviour
     {
         if (!isLocked)
         {
-            float velocityX = this.rigidbody2D.velocity.x;
-            float velocityY = this.rigidbody2D.velocity.y;
+            float velocityX = this.GetComponent<Rigidbody2D>().velocity.x;
+            float velocityY = this.GetComponent<Rigidbody2D>().velocity.y;
             //float currX = this.rigidbody2D.position.x;
             //float currY = this.rigidbody2D.position.y;
             //float newX = currX + velocityX;
@@ -126,14 +127,14 @@ public class Ball : MonoBehaviour
                 //Debug.Log("diff:" + diff);
             }
 
-            this.rigidbody2D.velocity = new Vector2(velocityX, velocityY);
+            this.GetComponent<Rigidbody2D>().velocity = new Vector2(velocityX, velocityY);
 
         }
         else
         {
             this.transform.position = new Vector2(paddle.transform.position.x, paddle.transform.position.y + paddleToBallVector.y);
-            this.rigidbody2D.velocity = new Vector2(0f, 0f);
-            this.rigidbody2D.rotation = 0f;
+            this.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+            this.GetComponent<Rigidbody2D>().rotation = 0f;
         }
     }
 
@@ -143,8 +144,8 @@ public class Ball : MonoBehaviour
 
         if (!isLocked)
         {
-            audio.volume = gameData.GetSFXVolume();
-            audio.Play();
+            GetComponent<AudioSource>().volume = gameData.GetSFXVolume();
+            GetComponent<AudioSource>().Play();
         }
     }
 }
