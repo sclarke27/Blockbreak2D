@@ -47,4 +47,9 @@ web/web.html
 Temp/
 web/
 obj/
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
 blockbreak2d_Data/output_log.txt
